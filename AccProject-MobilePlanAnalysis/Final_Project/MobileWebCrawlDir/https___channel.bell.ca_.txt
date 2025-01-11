@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta http-equiv="Content-Security-Policy" content="img-src https://*; child-src \'none\';"> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>Channel</title> 
+  <script>
+			// Embedded tag for https://channel.bell.ca using Google Analytics
+			console.log(window.location.host);
+            if (window.location.host == 'channel.bell.ca') {
+                // Google tag (gtag.js)
+                var script1 = document.createElement('script');
+                script1.src = "https://www.googletagmanager.com/gtag/js?id=G-QE3XX2Y08K";
+                script1.async = true;
+                document.head.appendChild(script1);
+ 
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+ 
+                gtag('config', 'G-QE3XX2Y08K');
+            }
+            // Embedded tag for https://canaux.bell.ca using Google Analytics
+            else {
+                // Google tag (gtag.js)
+                var script2 = document.createElement('script');
+                script2.src = "https://www.googletagmanager.com/gtag/js?id=G-P6NF4HZWPP";
+                script2.async = true;
+                document.head.appendChild(script2);
+ 
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+ 
+                gtag('config', 'G-P6NF4HZWPP');
+            }
+		</script> 
+  <script src="https://channel.bell.ca/js/jquery-3.3.1.js"></script> 
+  <link rel="stylesheet" href="https://channel.bell.ca/css/bootstrap.min.css"> 
+  <script src="https://channel.bell.ca/js/bootstrap.min.js"></script> 
+  <script src="https://channel.bell.ca/mustache/mustache.js"></script> 
+  <script src="https://channel.bell.ca/js/tablesorter-master/js/jquery.tablesorter.js"></script> 
+  <style>
+			body{
+				font-family: bell_medium;
+			}
+			a{
+				text-decoration:none;
+				color:white;
+			}
+			a:hover, a:active, a:visited, a:focus{
+				color:white;
+			}
+			header{
+				color:white;
+			}
+			nav{
+				padding-top:15px;
+				padding-bottom:15px;
+				background-color: #00549A;
+			}
+			#banner{
+				background-image: url("https://channel.bell.ca/images/gradient.jpg");
+				background-size: 100% 100%;
+				text-align:center;
+				height:100%;
+				padding-bottom:10px;
+			}
+			#headerButtons{
+				font-size:0.8em;
+			}
+			@media  only screen and (max-width: 768px) {
+				#feedbackButton{
+					margin: 25px 0px;
+					text-align:center;
+				}
+				#socialMediaButtons{
+					margin-top: 12px;
+					margin-bottom: 12px;
+				}
+			}
+			@media  only screen and (min-width: 769px) {
+				#feedbackButton{
+					margin: 25px 0px;
+					text-align:right;
+				}
+				#socialMediaButtons{
+					margin-top: 0px;
+					margin-bottom: 0px;
+					text-align:right;
+				}
+			}
+
+			@media  only screen and (max-width: 575px) {
+				.content {
+					padding-left:5%;
+					padding-right:5%;
+				}
+				#bellLogo{
+					width:50%;
+					text-align:center;
+					margin:auto;
+				}
+				nav{
+					height:90px;
+				}
+				#headerButtons{
+				    float:right;
+				    text-align:center;
+				}
+				#logoContainer{
+					text-align:center;
+				}
+				.mobile{
+					display:block;
+				}
+				.desktop{
+					display:none;
+				}
+				
+			} 
+			@media  only screen and (min-width: 576px) {
+				.content {
+					padding-left:5%;
+					padding-right:5%;
+				}
+				body{
+					font-size: 18px;
+				}
+				nav{
+					height:70px;
+				}
+				#headerButtons{
+				    float:right;
+				    text-align:right;
+				}
+				.mobile{
+					display:none;
+				}
+				.desktop{
+					display:block;
+				}
+			} 
+			h2{
+				margin-top: 10px;
+				font-family: bell_medium;
+			}
+			h1{
+				margin-top: 10px;
+				font-family: bell_medium;
+				font-size:30px;
+			}
+			#body{
+				background-color: #D4D4D4;
+				color:black;
+				padding-top:10px;
+				padding-bottom:1px;
+			}
+			@font-face {
+			    font-family: bell_medium;
+			    src: url("https://channel.bell.ca/fonts/bellslim_medium.otf");
+			}
+			@font-face {
+			    font-family: bell_bold;
+			    src: url("https://channel.bell.ca/fonts/bellslim_semibold.ttf");
+			}
+
+			.langLink:hover{
+				color:white;
+			}
+			#bellCAButton{
+				padding:5px 20px 5px 20px;
+				margin-left:10px;
+				display: inline-block;
+			    height: 100%;
+			    vertical-align: middle;
+			}
+
+			footer a{
+				text-decoration:inherit;
+				color:#00549A;
+				font-weight:bold;
+			}
+			footer a:hover, footer a:active, footer a:visited, footer a:focus{
+				color:#00549A;
+			}
+			footer{
+				margin-top:15px;
+				font-size:0.75em;
+				color:#555;
+			}
+			footer a{
+				white-space:nowrap;
+			}
+			.socialMedia{
+				width:48px;
+				height:48px;
+				margin-left:2px;
+				margin-right:2px;
+			}
+			a.skip-main {
+			    left:-999px;
+			    position:absolute;
+			    top:auto;
+			    width:1px;
+			    height:1px;
+			    overflow:hidden;
+			    z-index:-999;
+			}
+			a.skip-main:focus, a.skip-main:active {
+			    color: #fff;
+			    background-color:#000;
+			    left: auto;
+			    top: auto;
+			    width: 30%;
+			    height: auto;
+			    overflow:auto;
+			    margin: 10px 35%;
+			    padding:5px;
+			    border-radius: 15px;
+			    border:4px solid yellow;
+			    text-align:center;
+			    font-size:1.2em;
+			    z-index:999;
+			}
+		</style> 
+ </head> 
+ <body> <a class="skip-main desktop" href="#location">Skip to main content</a> <a class="skip-main mobile" aria-hidden="true" href="#location">Skip to main content</a> 
+  <header> 
+   <nav class="content"> 
+    <div class="col-sm-6 col-xs-12" id="logoContainer" style="margin-bottom:10px;"> 
+     <img id="bellLogo" src="https://channel.bell.ca/images/Bell_Channel_logo_en.png" style="width:200px" alt="Bell logo"> 
+    </div> 
+    <div id="headerButtons" class=" col-sm-6 col-xs-12"> 
+     <div class="col-sm-offset-6 col-sm-3 col-xs-6" style="margin-top:7px"> <a href="https://canaux.bell.ca" class="langLink"> Français</a> 
+     </div> 
+     <div class="col-xs-6 col-sm-3"> <a target="_blank" href="https://www.bell.ca/" class="bellBtn-primary" id="bellCAButton">bell.ca</a> 
+     </div> 
+    </div> 
+   </nav> 
+   <div id="banner" class="content"> 
+   </div> 
+  </header> 
+  <div id="body" class="content" role="main"> 
+   <input type="hidden" name="_token" value="9YLiFa6BOkv7FnoAOBveQtjDzY5RsrKWEHvAhiUG"> 
+   <style>
+	#or{
+		display: table-cell;
+		height: 40px;
+		vertical-align: middle;
+	}
+
+	.box{
+		margin-top: 10px;
+		border:1px solid #E1E1E1;
+	}
+
+	.box_header{
+		background-color:#EEEEEE;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left:20px;
+		font-size:120%;
+		border-bottom:1px solid #E1E1E1;
+		font-family: bell_medium;
+	}
+
+	.box_content{
+		background-color:white;
+		padding: 20px;
+	}
+
+	.bellBtn-primary, .bellBtn-primary:active, .bellBtn-primary:visited, .bellBtn-primary:focus, .bellBtn-primary:hover{
+		border: 2px solid #003778;
+		padding: 5px 50px 5px 50px;
+		color: white;
+		border-radius: 20px;
+		background-color: #003778;
+		text-decoration:none;
+	}
+
+	.bellBtn-primary:hover{
+		background-color: white;
+		color: #003778;
+		text-decoration:none;
+	}
+
+	#loading{
+		display:none;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin-top: -128px;
+		margin-left: -128px;
+		z-index: 1;
+	}
+
+	.bellBtn, .bellBtn:visited{
+		border: 2px solid #00549A;
+		padding: 5px 25px 5px 25px;
+		color: #00549A;
+		border-radius: 20px;
+		white-space: nowrap;
+	}
+
+	.bellBtn:hover, .bellBtn:active, .bellBtn:focus{
+		background-color: #00549A;
+		color:white;
+		text-decoration:none;
+	}
+
+	.verticalCenter{
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	.bellTV{
+		border: 3px solid white;
+		padding-left:0px;
+		padding-right:0px;
+		padding-top:20px;
+		padding-bottom:20px;
+	}
+
+	.bellTV:hover{
+		border: 3px solid #00549A;
+		cursor:pointer;
+	}
+
+	.bellTVActive{
+		border: 3px solid #00549A;
+	}
+
+	.tooltipText {
+		background-color: white;
+		color: black;
+		text-align: center;
+		padding: 0;
+		border:1px solid grey;
+
+	    /* Position the tooltip text - see examples below! */
+		position: absolute;
+		z-index: 1;
+		font-size:12px;
+	}
+
+	@media  speech {
+		.tooltipText {
+			display: block;
+		}
+	}
+
+	@media  screen {
+		.tooltipText {
+			display: none;
+		}
+	}
+
+	@media  only screen and (max-width: 1000px) {
+		.tooltipText {
+			width: 50%;
+			left:41%;
+			margin-top:3%;
+		}
+		#postalDisplay{
+			margin-bottom:10px;
+		}
+	}
+	@media  only screen and (min-width: 1001px) {
+		.tooltipText {
+			width: 33%;
+			margin-top:1%;
+			left:60%;
+		}
+	}
+
+	tr:hover td .tooltipText, tr:focus td .tooltipText, tr:hover td .active {
+		display: block;
+	}
+
+	.competitor{
+		display:none;
+	}
+
+	.helper{
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+
+	th{
+		text-align:center;
+	}
+
+	#useLocation{
+		font-size:0.9em;
+	}
+
+	tbody{
+		font-family: arial;
+		font-size:15px;
+	}
+
+	.channelNumber, .competitor{
+		text-align:center;
+	}
+</style> 
+   <script>
+	$(function(){
+		//get html templates
+		var banner = $('#bannerTmp').html();
+		var enterLocation = $('#enterLocationTmp').html();
+		var locationEntered = $('#locationEnteredTmp').html();
+		var TVService = $('#TVServiceTmp').html();
+		var channels = $('#channelTmp').html();
+		var search = $("#searchBarTmp").html();
+
+		//parse the templates
+		Mustache.parse(banner);
+		Mustache.parse(enterLocation);
+		Mustache.parse(locationEntered);
+		Mustache.parse(TVService);
+		Mustache.parse(channels);
+		Mustache.parse(search);
+
+	  	//render the first templates to appear
+		var enterLocationRen = Mustache.render(enterLocation, {});
+		var bannerRendered = Mustache.render(banner, {});
+
+	  	//click event functions
+		var continueToTvButton = function()
+		{
+			var postal_code = "";
+
+			if (typeof $("#location").val() == "undefined")
+			{
+				postal_code = $("#postal_change").text();
+			}
+			else
+			{
+				postal_code = $("#location").val();
+			}
+
+			var locationEnteredRen = Mustache.render(locationEntered, {postalCode: postal_code.trim()});
+			var TVServiceRen = Mustache.render(TVService, {});
+
+			$("#enterLocation").remove();
+			$('#boxes').html(locationEnteredRen+TVServiceRen);
+			$('#banner').html(bannerRendered);
+			$("#change").click(changeButton);
+			$(".bellTV").click(bellTvClick);
+			$("#continue").unbind("click");
+			$("#continue").click(continueToChannelButton);
+			$("#continue").hide();
+			$(".skip-main").attr("href", "#firstBellTV");
+		};
+
+		var changeButton = function()
+		{
+			var postal_code = $(".postalDisplay").text();
+
+			$("#locationEntered").remove();
+			$("#TVService").remove();
+			$('#boxes').html(enterLocationRen);
+			$('#banner').html(bannerRendered);
+			$("#location").val(postal_code.trim());
+			$("#continue").unbind("click");
+			$("#continue").click(continueToTvButton);
+			$("#continue").show();
+			$(".skip-main").attr("href", "#location");
+		};
+
+		var bellTvClick = function()
+		{
+			$(".bellTV").removeClass("bellTVActive")
+			$(this).addClass("bellTVActive");
+			$("#continue").show();
+		};
+
+		var continueToChannelButton = function()
+		{
+			$("#loading").show();
+
+			
+			if ($(".postalDisplay").text() !== ""){
+				var postal_code = $(".postalDisplay").text();
+				var TVType = $(".bellTVActive").attr("value");
+			}
+
+			var str = "postalCode="+postal_code+"&tvType="+TVType;
+			//var $_token = $('#token').val();
+			var $_token = $('input[name="_token"]').val();
+
+			$(".skip-main").attr("href", "#searchBarInput");
+
+			$.ajax({
+				type: 'post',
+				cache: false,
+				headers: { 'X-CSRF-TOKEN' : $_token }, 
+				url: "https://channel.bell.ca/getLPR",
+				data: str, 
+				dataType: 'json',
+
+				success: function(data)
+				{
+					//try{console.log(JSON.parse(data).competitorName);}catch(e){ console.log(e);}
+					if (TVType == "Fibe TV")
+						var displayTVType = 'Fibe TV';
+					else if (TVType == "Alt TV")
+						var displayTVType = 'Fibe TV app';
+					else if (TVType == "Satellite TV")
+						var displayTVType = 'Satellite TV';
+
+					var searchRen = Mustache.render(search, {competitorName: data.competitorName, postalCode: postal_code, TVType: displayTVType});
+			  		//var channelsRen = Mustache.render(channels, {"channels":[{"channel":{"number":"1","logo":"logo","name":"TVA"}}, {"channel":{"number":"2","logo":"logo2","name":"CBC"}}]});
+					var channelData = data;
+
+					if (channelData.channels == [])
+						var channelsRen = Mustache.render(channels, {competitorName:false, channels:false});
+					else
+					{
+						channelData.TVType = displayTVType;
+						var channelsRen = Mustache.render(channels, channelData);
+					}
+
+					$('#boxes').html(channelsRen);
+					$('#banner').html(searchRen);
+					$("#postal_change").click(changeButton);
+					$("#TV_change").click(continueToTvButton);
+					$("#searchBarInput").keyup(searchFunction);
+					$("#searchBarInput").change(searchFunction);
+					$("#competitorSearch").click(competitorFunction);
+					$("#continue").hide();
+					$("#loading").hide();
+					$("td:empty").attr("aria-hidden", "true");
+					$("#channelTable").tablesorter({
+						headers:{
+							0: {sorter: 'digit'},
+							1: {sorter: 'digit'}
+						},
+						tabindex:true
+					});
+				},
+				error: function(data)
+				{
+					alert("Postal code not found");
+					$("#loading").hide();
+				}
+			});
+		};
+
+		var searchFunction = function()
+		{
+			var searchTerm = $("#searchBarInput").val();
+
+			if ($(".competitor").is(":visible"))
+				var searchCompetitor = ", .competitor";
+			else 
+				var searchCompetitor = "";
+
+			$("tbody tr").hide();
+
+			if ($.isNumeric(searchTerm))
+				var searchingIn = ".channelNumber"+searchCompetitor;
+			else
+				var searchingIn = ".channelName";
+
+	  		//$("tbody tr:contains('"+searchTerm+"')").show();
+			$(searchingIn).filter(function()
+			{
+				if ($(this).not('.tooltipText').text().toLowerCase().search(searchTerm.toLowerCase()) === -1)
+					return false
+				else 
+					return true; 
+
+			}).closest('tr').show();
+		};
+
+		var competitorFunction = function()
+		{
+			$(".competitor").toggle();
+
+			if ($(".competitor").is(":visible"))
+			{
+				$("#searchLinkText").text("Find a Bell TV channel by searching by name or number.");
+				$("#searchBarInput").attr("placeholder", "Enter the channel number or name from your previous provider");
+			}
+			else
+			{
+				$("#searchLinkText").text("New to Bell? Match up a channel name and number from your previous provider with the ones on Bell TV.");
+				$("#searchBarInput").attr("placeholder", "Enter channel name or number");
+			}
+
+			searchFunction.call();
+		};
+
+			  	//display the first templates
+		$('#boxes').html(enterLocationRen);
+		$('#banner').html(bannerRendered);
+
+		$("#continue").click(continueToTvButton);
+		$("#location").keyup(function()
+		{
+			if ($(this).val() != "")
+				$("#continue").show();
+			else
+				$("#continue").hide();
+		});
+
+		$("#location").change(function()
+		{
+			if ($(this).val() != "")
+				$("#continue").show();
+			else
+				$("#continue").hide();
+		});
+			});
+
+</script> 
+   <div id="boxes"> 
+   </div> 
+   <div class="form-group text-center" style="margin-top:15px"> <a href="#" id="continue" class="bellBtn-primary" style="margin:auto; display:none">Continue</a> 
+    <img id="loading" alt="loading" src="https://channel.bell.ca/images/loading.gif"> 
+   </div> 
+   <script id="enterLocationTmp" type="x-tmpl-mustache">
+	<div class="box" id="enterLocation">
+		<div class="box_header">
+			<ol style="margin-bottom:0"><li>To begin, enter your postal code</li></ol>
+		</div>
+		<div class="box_content">
+			<div class="row">
+				<div class="col-sm-5 col-xs-12">
+					<input class="form-control" placeholder="Postal code" id="location" style="height:40px" aria-label="Postal code">
+				</div>
+				<div class="col-sm-2 col-xs-12" style="text-align:center; display:table-cell; vertical-align:middle; height:40px; padding-top:7.5px" id="or">
+					or
+				</div>
+				<div class="col-sm-5 col-xs-12 text-center">
+					<a href="#" id="useLocation" class="bellBtn col-xs-12"><img alt="Compass arrow" style="margin-right:5px" src="https://channel.bell.ca/images/location.png">Use my location</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	function geo_error(location)
+	{
+		console.log(location);
+	}
+
+	function geo_success(location)
+	{
+		var postal_code = "";
+
+		$.getJSON("/getLocation", 
+			{ 
+				'latitude': location.coords.latitude,
+				'longitude': location.coords.longitude
+			},
+			function(postal_code)
+			{
+				//console.log(postal_code);
+
+				if (postal_code == "")
+					alert("Postal code not found");
+				else
+					$("#continue").show();
+
+				$("#location").val(postal_code['postal_code']);
+			}).fail(function() 
+			{
+				alert("Use my location requests throttled");
+			});
+	}
+
+	$(function()
+	{
+		$("#useLocation").click(function()
+		{
+			if (navigator.geolocation)
+			{
+				const geo_options = {
+					enableHighAccuracy: true,
+					timeout: 5000,
+					maximumAge: 0
+				};
+
+				navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
+			}
+			else
+			{
+				alert("Postal code not found");
+			}
+		});
+	});
+	</script>  
+   <script id="locationEnteredTmp" type="x-tmpl-mustache">
+	<div class="box" id="locationEntered">
+		<div class="box_header">
+			<ol style="margin-bottom:0"><li>To begin, enter your postal code</li></ol>
+		</div>
+		<div class="box_content">
+			<div class="row" style="text-align:center">
+				<div class="col-sm-6 col-xs-12 col-md-offset-3 col-md-3" id="postalDisplay">
+					Postal code:&nbsp;<span class="postalDisplay">{{ postalCode }}</span>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12">
+					<a href="#" id="change" class="bellBtn">Change</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</script> 
+   <script id="TVServiceTmp" type="x-tmpl-mustache">
+	<div class="box" id="TVService">
+		<div class="box_header">
+			<ol start="2" style="margin-bottom:0"><li>Select your Bell TV service</li></ol>
+		</div>
+		<div style="background-color:white">
+			<div class="row" style="text-align:center; margin:0px">
+				<a href="#" tabindex="0" class="col-sm-4 col-xs-12 bellTV" id="firstBellTV" value="Fibe TV">
+					<img alt="Fibe TV" src="https://channel.bell.ca/images/five_TV_en.jpg">
+				</a>
+				<a href="#" tabindex="0" class="col-sm-4 col-xs-12 bellTV" value="Fibe TV app">
+					<img alt="Fibe TV app" style="height:114px" src="https://channel.bell.ca/images/fibe_app.png">
+					<br>
+					<span style="text-align:center; color:black">Fibe TV app</span>
+				</a>
+				<a href="#" tabindex="0" class="col-sm-4 col-xs-12 bellTV" value="Satellite TV">
+					<img alt="Satellite TV" src="https://channel.bell.ca/images/Satellite_TV_en.jpg">
+				</a>
+			</div>
+		</div>
+	</div>
+</script> 
+   <script id="bannerTmp" type="x-tmpl-mustache">
+	<img src="https://channel.bell.ca/images/img_channles_icon_v3.png" alt="TV search" style="display:block; margin:auto">
+	<h1>Looking for a TV channel?</h1>
+	<p>Use this tool to easily search by channel name or number.</p>
+</script> 
+   <script id="searchBarTmp" type="x-tmpl-mustache">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6" style=" text-align:left">
+			<h1>Search for channels</h1>
+		</div>
+		<div class="col-xs-12 col-sm-offset-2 col-sm-4" style="font-size:12px; text-align:right; margin-top:20px; margin-bottom:10px">
+			<a id="TV_change" title="Change Bell TV service" href='#' style="padding-right:20px;border-right:1px solid white"><img alt="TV" src="https://channel.bell.ca/images/TV.png" > {{ TVType }}</a>
+		
+			<a id="postal_change" title="Change postal code" class="postalDisplay" href='#' style="padding-left:16px"><img id="location" src="https://channel.bell.ca/images/postal_code.png" alt="Change postal code" > {{postalCode}}</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 has-feedback form-group">
+			<input id="searchBarInput" class="form-control" placeholder="Enter channel name or number" aria-label="Enter channel name or number">
+			<i class="glyphicon glyphicon-search form-control-feedback" alt="Enter channel name or number" style="color:#00549A;margin-right:15px" aria-label="Enter channel name or number"></i>
+		</div>
+	</div>
+	<div class="row" style="font-size:12px">
+		{{#competitorName}}
+		<div class="col-xs-12" style="text-align:left;">
+			<a id="competitorSearch" href='#'><span id="searchLinkText">New to Bell? Match up a channel name and number from your previous provider with the ones on Bell TV.</span> <img alt="icon" src="https://channel.bell.ca/images/circle_arrow.png" ></a>
+		</div>
+		{{/competitorName}}
+	</div>
+</script> 
+   <script id="channelTmp" type="x-tmpl-mustache">
+	<table style="font-size:15px;" id="channelTable" class="table table-hover box table-bordered tablesorter">
+		<caption style="color:black">Channel</caption>
+		<thead class="box_header">
+			<tr>
+				{{#competitorName}}
+				<th tabindex="0" class="competitor" style="display:none">
+											{{competitorName}} Channel 
+									
+				</th>{{/competitorName}}
+				<th tabindex="0">
+											{{ TVType }} Channel 
+									</th>
+				<th tabindex="0">Logo</th>
+				<th tabindex="0">Channel name</th>
+			</tr>				
+		</thead>
+		<tbody class="box_content">
+			{{#channels}}
+				<tr tabindex="0">
+					{{#competitorName}}<td class="competitor" style="display:none;vertical-align: middle;">{{channel.competitor}}</td>{{/competitorName}}
+					<td class="channelNumber" style="vertical-align: middle;">{{channel.number}}</td>
+					<td style="text-align:center"><img alt="{{channel.name}} logo" style="max-width:60px;vertical-align: middle;" src="{{channel.logo}}"></td>
+					<td style="vertical-align: middle;"><span class="channelName">{{channel.name}}</span><span aria-label="{{channel.description}}"></span>
+						<div class="tooltipText">
+							<br>
+							{{channel.description}}
+							<br><br>
+						</div>
+					</td>
+				</tr>
+			{{/channels}}
+			{{^channels}}
+				<tr>
+					<td colspan=2>No data available for this TV service in your region</td>
+				</tr>
+			{{/channels}}
+		</tbody>
+	</table>
+</script> 
+  </div> 
+  <footer class="content" style="height: 150px"> <a class="skip-main desktop" href="#location">Skip to main content</a> <a class="skip-main mobile" aria-hidden="true" href="#location">Skip to main content</a> 
+   <div class="col-md-5 col-sm-12" style="margin-top:10px"> <a style="border-right:1px solid #555; padding-right:10px" target="_blank" href="
+												https://support.bell.ca/Billing-and-Accounts/Security_and_privacy/How_does_Bell_respect_my_privacy
+											">Privacy</a> <a style="border-right:1px solid #555; padding:0 10px" target="_blank" href="
+												https://support.bell.ca/Billing-and-Accounts/Security_and_privacy/Security-and-preventing-fraud
+											">Security</a> <a style="border-right:1px solid #555; padding:0 10px" target="_blank" href="
+												https://www.bell.ca/Legal_and_terms
+											">Legal &amp; Regulatory</a> <a style="padding:0 10px" target="_blank" href="
+												https://www.bell.ca/CRTC-Wireless-Code
+											">Your rights as a wireless customer</a>
+    <br> © Bell Canada, 2023. All Rights reserved. 
+   </div> 
+   <div class="col-md-4 col-sm-8 col-xs-12 col-sm-offset-4 col-md-offset-3" id="socialMediaButtons"> <a target="_blank" href="
+												https://www.facebook.com/BellCanada
+											"><img class="socialMedia" src="https://channel.bell.ca/images/facebook.png" alt="Facebook"></a> <a target="_blank" href="
+												https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fwww.bell.ca%2F&amp;ref_src=twsrc%5Etfw&amp;region=follow_link&amp;screen_name=Bell&amp;tw_p=followbutton
+											"><img class="socialMedia" src="https://channel.bell.ca/images/twitter.png" alt="Twitter"></a> <a target="_blank" href="
+												https://www.linkedin.com/company/bell
+											"><img class="socialMedia" src="https://channel.bell.ca/images/linkedin.png" alt="LinkedIn"></a> <a target="_blank" href="
+												https://www.youtube.com/bellcanada
+											"><img class="socialMedia" src="https://channel.bell.ca/images/youtube.png" alt="YouTube"></a> <a target="_blank" href="
+												http://blog.bell.ca/
+											"><img class="socialMedia" src="https://channel.bell.ca/images/blog-en.png" alt="blog"></a> 
+   </div> 
+   <div class="col-xs-12" id="feedbackButton"> <a target="_blank" href="
+												https://secure.opinionlab.com/ccc01/comment_card_d.asp
+											" class="bellBtn">Site feedback</a> 
+   </div> 
+   <div class="col-xs-12"></div> 
+  </footer>  
+ </body>
+</html>

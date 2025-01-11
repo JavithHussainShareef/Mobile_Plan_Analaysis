@@ -1,0 +1,1055 @@
+<!doctype html>
+<html lang="en" data-critters-container>
+ <head> 
+  <meta charset="utf-8" name="google" content="notranslate"> 
+  <base href="/"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="icon" type="image/x-icon" href="favicon.ico"> 
+  <style>
+      @keyframes enter {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes exit {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      #divAppLoading {
+        position: fixed;
+        z-index: 9999999;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+      }
+
+      .svgLoader {
+        animation: svgLoaderRotator 1.4s linear infinite;
+      }
+      @keyframes svgLoaderRotator {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(270deg);
+        }
+      }
+      .svgLoader circle {
+        stroke-dasharray: 187;
+        stroke-dashoffset: 0;
+        transform-origin: center;
+        stroke: #da291c;
+        animation: svgLoaderDash 1.4s ease-in-out infinite;
+      }
+      @keyframes svgLoaderDash {
+        0% {
+          stroke-dashoffset: 27;
+        }
+        50% {
+          stroke-dashoffset: 137;
+          transform: rotate(135deg);
+        }
+        100% {
+          stroke-dashoffset: 27;
+          transform: rotate(450deg);
+        }
+      }
+    </style> 
+  <style>@charset "UTF-8";.ds-bg-body-default{background-color:var(--ds-bg-body-default)}.ds-bg-body-container{background-color:var(--ds-bg-body-container)}.ds-bg-feedback-info{background-color:var(--ds-bg-feedback-info)}.ds-txt-body-default{color:var(--ds-txt-body-default)}.ds-icon-feedback-info{color:var(--ds-icon-feedback-info)}.ds-br-body-default{border-color:var(--ds-br-body-default)}.ds-br-body-secondary{border-color:var(--ds-br-body-secondary)}.ds-br-feedback-info{border-color:var(--ds-br-feedback-info)}.ds-title-1{text-transform:var(--ds-title-1-text-transform, initial);letter-spacing:var(--ds-title-1-letter-spacing, initial);line-height:var(--ds-title-1-line-height, initial);font-weight:var(--ds-title-1-font-weight, initial);font-size:var(--ds-title-1-font-size, initial)}@media (min-width: 900px){.ds-title-1{font-size:var(--ds-title-1-font-size-tablet, initial)}}@media (min-width: 1200px){.ds-title-1{font-size:var(--ds-title-1-font-size-desktop, initial)}}.ds-title-2{text-transform:var(--ds-title-2-text-transform, initial);letter-spacing:var(--ds-title-2-letter-spacing, initial);line-height:var(--ds-title-2-line-height, initial);font-weight:var(--ds-title-2-font-weight, initial);font-size:var(--ds-title-2-font-size, initial)}@media (min-width: 900px){.ds-title-2{font-size:var(--ds-title-2-font-size-tablet, initial)}}@media (min-width: 1200px){.ds-title-2{font-size:var(--ds-title-2-font-size-desktop, initial)}}.ds-title-3{text-transform:var(--ds-title-3-text-transform, initial);letter-spacing:var(--ds-title-3-letter-spacing, initial);line-height:var(--ds-title-3-line-height, initial);font-weight:var(--ds-title-3-font-weight, initial);font-size:var(--ds-title-3-font-size, initial)}@media (min-width: 900px){.ds-title-3{font-size:var(--ds-title-3-font-size-tablet, initial)}}@media (min-width: 1200px){.ds-title-3{font-size:var(--ds-title-3-font-size-desktop, initial)}}.ds-title-4{text-transform:var(--ds-title-4-text-transform, initial);letter-spacing:var(--ds-title-4-letter-spacing, initial);line-height:var(--ds-title-4-line-height, initial);font-weight:var(--ds-title-4-font-weight, initial);font-size:var(--ds-title-4-font-size, initial)}@media (min-width: 900px){.ds-title-4{font-size:var(--ds-title-4-font-size-tablet, initial)}}@media (min-width: 1200px){.ds-title-4{font-size:var(--ds-title-4-font-size-desktop, initial)}}.ds-body-l{text-transform:var(--ds-body-l-text-transform, initial);letter-spacing:var(--ds-body-l-letter-spacing, initial);line-height:var(--ds-body-l-line-height, initial);font-weight:var(--ds-body-l-font-weight, initial);font-size:var(--ds-body-l-font-size, initial)}.ds-body-r{text-transform:var(--ds-body-r-text-transform, initial);letter-spacing:var(--ds-body-r-letter-spacing, initial);line-height:var(--ds-body-r-line-height, initial);font-weight:var(--ds-body-r-font-weight, initial);font-size:var(--ds-body-r-font-size, initial)}.ds-txt-button{text-transform:var(--ds-txt-button-text-transform, initial);letter-spacing:var(--ds-txt-button-letter-spacing, initial);line-height:var(--ds-txt-button-line-height, initial);font-weight:var(--ds-txt-button-font-weight, initial);font-size:var(--ds-txt-button-font-size, initial)}html{box-sizing:border-box;-ms-overflow-style:scrollbar}html,body{height:100%}*,*:before,*:after{box-sizing:inherit}*{padding:0;margin:0}a{text-decoration:none}@font-face{font-family:Ted Next Var;src:url(https://assets.rogers-assets.com/v3/fonts/TedNextVar-Regular.woff2?v=3.17.0) format("woff2 supports variations");src:url(https://assets.rogers-assets.com/v3/fonts/TedNextVar-Regular.woff2?v=3.17.0) format("woff2 supports variations"),url(https://assets.rogers-assets.com/v3/fonts/TedNextVar-Regular.woff2?v=3.17.0) format("woff2-variations");font-weight:100 900;font-style:normal;font-display:swap}@font-face{font-family:Ted Next Var;src:url(https://assets.rogers-assets.com/v3/fonts/TedNextVar-Italic.woff2?v=3.17.0) format("woff2 supports variations");src:url(https://assets.rogers-assets.com/v3/fonts/TedNextVar-Italic.woff2?v=3.17.0) format("woff2 supports variations"),url(https://assets.rogers-assets.com/v3/fonts/TedNextVar-Italic.woff2?v=3.17.0) format("woff2-variations");font-weight:100 900;font-style:italic;font-display:swap}@font-face{font-family:Ted Next;src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-Light.woff2?v=3.17.0) format("woff2");src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-Light.woff2?v=3.17.0) format("woff2"),url(https://assets.rogers-assets.com/v3/fonts/TedNext-Light.ttf?v=3.17.0) format("truetype");font-weight:100;font-style:normal;font-display:swap}@font-face{font-family:Ted Next;src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-LightItalic.woff2?v=3.17.0) format("woff2");src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-LightItalic.woff2?v=3.17.0) format("woff2"),url(https://assets.rogers-assets.com/v3/fonts/TedNext-LightItalic.ttf?v=3.17.0) format("truetype");font-weight:100;font-style:italic;font-display:swap}@font-face{font-family:Ted Next;src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-Regular.woff2?v=3.17.0) format("woff2");src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-Regular.woff2?v=3.17.0) format("woff2"),url(https://assets.rogers-assets.com/v3/fonts/TedNext-Regular.ttf?v=3.17.0) format("truetype");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:Ted Next;src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-Italic.woff2?v=3.17.0) format("woff2");src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-Italic.woff2?v=3.17.0) format("woff2"),url(https://assets.rogers-assets.com/v3/fonts/TedNext-Italic.ttf?v=3.17.0) format("truetype");font-weight:400;font-style:italic;font-display:swap}@font-face{font-family:Ted Next;src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-Medium.woff2?v=3.17.0) format("woff2");src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-Medium.woff2?v=3.17.0) format("woff2"),url(https://assets.rogers-assets.com/v3/fonts/TedNext-Medium.ttf?v=3.17.0) format("truetype");font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:Ted Next;src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-SemiBold.woff2?v=3.17.0) format("woff2");src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-SemiBold.woff2?v=3.17.0) format("woff2"),url(https://assets.rogers-assets.com/v3/fonts/TedNext-SemiBold.ttf?v=3.17.0) format("truetype");font-weight:600;font-style:normal;font-display:swap}@font-face{font-family:Ted Next;src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-SemiBoldItalic.woff2?v=3.17.0) format("woff2");src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-SemiBoldItalic.woff2?v=3.17.0) format("woff2"),url(https://assets.rogers-assets.com/v3/fonts/TedNext-SemiBoldItalic.ttf?v=3.17.0) format("truetype");font-weight:600;font-style:italic;font-display:swap}@font-face{font-family:Ted Next;src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-DemiBold.woff2?v=3.17.0) format("woff2");src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-DemiBold.woff2?v=3.17.0) format("woff2"),url(https://assets.rogers-assets.com/v3/fonts/TedNext-DemiBold.ttf?v=3.17.0) format("truetype");font-weight:650;font-style:normal;font-display:swap}@font-face{font-family:Ted Next;src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-DemiBoldItalic.woff2?v=3.17.0) format("woff2");src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-DemiBoldItalic.woff2?v=3.17.0) format("woff2"),url(https://assets.rogers-assets.com/v3/fonts/TedNext-DemiBoldItalic.ttf?v=3.17.0) format("truetype");font-weight:650;font-style:italic;font-display:swap}@font-face{font-family:Ted Next;src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-Bold.woff2?v=3.17.0) format("woff2");src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-Bold.woff2?v=3.17.0) format("woff2"),url(https://assets.rogers-assets.com/v3/fonts/TedNext-Bold.ttf?v=3.17.0) format("truetype");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:Ted Next;src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-BoldItalic.woff2?v=3.17.0) format("woff2");src:url(https://assets.rogers-assets.com/v3/fonts/TedNext-BoldItalic.woff2?v=3.17.0) format("woff2"),url(https://assets.rogers-assets.com/v3/fonts/TedNext-BoldItalic.ttf?v=3.17.0) format("truetype");font-weight:700;font-style:italic;font-display:swap}*{font-family:Ted Next,sans-serif}@supports (font-variation-settings: normal){*{font-family:Ted Next Var,sans-serif}}html{font-size:62.5%}body{font-size:1.6rem;color:#1f1f1f}p{font-size:var(--ds-body-r-font-size, initial);text-transform:var(--ds-body-r-text-transform, initial);line-height:var(--ds-body-r-line-height, initial);letter-spacing:var(--ds-body-r-letter-spacing, initial);font-weight:var(--ds-body-r-font-weight, initial);margin-bottom:1.6rem;margin-bottom:0}ol{padding-left:24px;margin-bottom:0}ol li{font-size:var(--ds-body-r-font-size, initial);text-transform:var(--ds-body-r-text-transform, initial);line-height:var(--ds-body-r-line-height, initial);letter-spacing:var(--ds-body-r-letter-spacing, initial);font-weight:var(--ds-body-r-font-weight, initial);margin-bottom:1.6rem;margin-bottom:8px;padding-left:16px}ol li:last-child{margin-bottom:0}a{color:var(--ds-txt-interactive-link);text-decoration:underline;-webkit-tap-highlight-color:transparent}a:hover,a:focus{text-decoration-thickness:3px}a:focus{outline:none;box-shadow:0 0 0 2px var(--ds-br-interactive-default),0 0 0 5px var(--ds-focus)}sup{font-size:50%;line-height:1}* h1{font-size:var(--ds-title-1-font-size, initial);text-transform:var(--ds-title-1-text-transform, initial);letter-spacing:var(--ds-title-1-letter-spacing, initial);line-height:var(--ds-title-1-line-height, initial);font-weight:var(--ds-title-1-font-weight, initial);margin-bottom:3.2rem}@media (min-width: 900px){* h1{font-size:var(--ds-title-1-font-size-tablet, initial)}}@media (min-width: 1200px){* h1{font-size:var(--ds-title-1-font-size-desktop, initial)}}@media (min-width: 900px){* h1{margin-bottom:4rem}}* h2{font-size:var(--ds-title-2-font-size, initial);text-transform:var(--ds-title-2-text-transform, initial);letter-spacing:var(--ds-title-2-letter-spacing, initial);line-height:var(--ds-title-2-line-height, initial);font-weight:var(--ds-title-2-font-weight, initial);margin-bottom:1.6rem}@media (min-width: 900px){* h2{font-size:var(--ds-title-2-font-size-tablet, initial)}}@media (min-width: 1200px){* h2{font-size:var(--ds-title-2-font-size-desktop, initial)}}@media (min-width: 900px){* h2{margin-bottom:2.4rem}}*.text-bold{font-weight:700!important}*.text-semi{font-weight:600!important}[mode=dark],[mode=light],[mode=campaign]{color:var(--ds-txt-body-default)}.rds-icon-close:before{content:"\e901"}.rds-icon-right:before{content:"\e906"}.rds-icon-chevron-down:before{content:"\e904"}.rds-icon-info-filled:before{content:"\e99a"}.rds-icon-open-new:before{content:"\e94b"}.rds-pictogram-family:before{content:"\e91b"}.rds-pictogram-money-back:before{content:"\e938"}.rds-pictogram-security:before{content:"\e993"}.position-relative{position:relative!important}.position-absolute{position:absolute!important}.top-4{top:4px!important}.right-16{right:16px!important}.d-none{display:none!important}.d-inline-block{display:inline-block!important}.d-block{display:block!important}.d-flex{display:flex!important}.d-inline-flex{display:inline-flex!important}@media (min-width: 900px){.d-md-none{display:none!important}.d-md-block{display:block!important}}.mt-8{margin-top:8px!important}.mt-16{margin-top:16px!important}.mb-0{margin-bottom:0!important}.mb-8{margin-bottom:8px!important}.mb-16{margin-bottom:16px!important}.mb-24{margin-bottom:24px!important}@media (min-width: 900px){.mb-md-0{margin-bottom:0!important}.mb-md-24{margin-bottom:24px!important}}.mr-8{margin-right:8px!important}@media (min-width: 600px){.mr-sm-24{margin-right:24px!important}}.ml-24{margin-left:24px!important}.w-100{width:100%!important}.h-100{height:100%!important}@media (min-width: 600px){.w-sm-auto{width:auto!important}}@media (min-width: 900px){.w-md-auto{width:auto!important}}.mw-100{max-width:100%!important}.mw-content{max-width:728px!important}.mh-100{max-height:100%!important}.p-0{padding:0!important}.p-16{padding:16px!important}@media (min-width: 900px){.p-md-40{padding:40px!important}}.pt-16{padding-top:16px!important}.pt-40{padding-top:40px!important}@media (min-width: 900px){.pt-md-56{padding-top:56px!important}}.pb-16{padding-bottom:16px!important}.pb-40{padding-bottom:40px!important}@media (min-width: 900px){.pb-md-16{padding-bottom:16px!important}.pb-md-56{padding-bottom:56px!important}}.pr-0{padding-right:0!important}.pr-48{padding-right:48px!important}.pr-72{padding-right:72px!important}@media (min-width: 900px){.pr-md-0{padding-right:0!important}.pr-md-12{padding-right:12px!important}.pr-md-24{padding-right:24px!important}.pr-md-80{padding-right:80px!important}}.pl-0{padding-left:0!important}@media (min-width: 900px){.pl-md-0{padding-left:0!important}.pl-md-12{padding-left:12px!important}.pl-md-24{padding-left:24px!important}}.px-16{padding-left:16px!important;padding-right:16px!important}@media (min-width: 900px){.px-md-24{padding-left:24px!important;padding-right:24px!important}}.py-16{padding-top:16px!important;padding-bottom:16px!important}.py-24{padding-top:24px!important;padding-bottom:24px!important}.py-40{padding-top:40px!important;padding-bottom:40px!important}@media (min-width: 900px){.py-md-56{padding-top:56px!important;padding-bottom:56px!important}}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.outline-none:focus{outline:none}.ds-moz-focus-inner::-moz-focus-inner{border:0}.ds-pointer{cursor:pointer}.ds-no-overflow{overflow:hidden}.ds-trim-last>*:last-child{margin-bottom:0!important}[mode=dark]{--ds-overlay-color: 255, 255, 255;--ds-overlay-reverse-color: 0, 0, 0}[mode=light]{--ds-overlay-color: 0, 0, 0;--ds-overlay-reverse-color: 255, 255, 255}.container{width:100%;padding-right:24px;padding-left:24px;margin-right:auto;margin-left:auto}@media (min-width: 1200px){.container{max-width:1200px}}.row{display:flex;flex-wrap:wrap;margin-right:-12px;margin-left:-12px}.col-md-9,.col-md-8,.col-md-7,.col-md-6,.col-md-5,.col-md-4,.col-md-3,.col-12{position:relative;width:100%;min-height:1px;padding-right:12px;padding-left:12px}.col-12{flex:0 0 100%;max-width:100%}@media (min-width: 900px){.col-md-3{flex:0 0 25%;max-width:25%}.col-md-4{flex:0 0 33.3333333333%;max-width:33.3333333333%}.col-md-5{flex:0 0 41.6666666667%;max-width:41.6666666667%}.col-md-6{flex:0 0 50%;max-width:50%}.col-md-7{flex:0 0 58.3333333333%;max-width:58.3333333333%}.col-md-8{flex:0 0 66.6666666667%;max-width:66.6666666667%}.col-md-9{flex:0 0 75%;max-width:75%}}.flex-column{flex-direction:column!important}.flex-column-reverse{flex-direction:column-reverse!important}.flex-wrap{flex-wrap:wrap!important}.flex-grow-1{flex-grow:1!important}.justify-content-center{justify-content:center!important}.justify-content-between{justify-content:space-between!important}.align-items-start{align-items:flex-start!important}.align-items-center{align-items:center!important}.align-self-end{align-self:flex-end!important}@media (min-width: 900px){.flex-md-row{flex-direction:row!important}.flex-md-row-reverse{flex-direction:row-reverse!important}.justify-content-md-center{justify-content:center!important}.align-self-md-center{align-self:center!important}}.gap-12{gap:12px}.gap-16{gap:16px}.gap-24{gap:24px}@media (min-width: 900px){.gap-md-32{gap:32px}}.text-left{text-align:left!important}.text-center{text-align:center!important}.text-no-decoration{text-decoration:none;text-decoration-thickness:auto!important}.text-nowrap{white-space:nowrap!important}.b-0{border-width:0px!important}.b-1{border-width:1px!important}.by-1{border-top-width:1px!important;border-bottom-width:1px!important}.ds-corners{border-radius:4px}.b-solid{border-style:solid}.ratio-16by9{padding-top:56.25%}.ratio-3by2{padding-top:66.6666666667%}.ratio-1by1{padding-top:100%}@media (min-width: 900px){.ratio-md-1by1{padding-top:100%}}.group:hover .group-hover\:text-bold{font-weight:700!important}@-ms-viewport{width:device-width}.ds-bgcolor-transparent{background-color:#0000!important}.ds-picture{position:relative}.ds-picture:not(.ratio-auto) picture{position:absolute;inset:0}.ds-picture.-product img{object-fit:contain}.ds-picture img{width:100%;height:100%;object-fit:cover;display:block}@media all and (-ms-high-contrast: none),(-ms-high-contrast: active){.ds-picture.-product img{max-height:100%!important;max-width:100%!important;width:auto!important}.ds-picture:not(.ratio-auto) picture{overflow:hidden}.ds-picture:not(.ratio-auto) picture img{position:absolute;height:auto;width:100%;top:50%;left:50%;transform:translate(-50%,-50%)}}.ds-button.-icon:disabled .ds-button__wrapper,.ds-button.-primary:disabled,.ds-button.-secondary:disabled{pointer-events:none;color:var(--ds-txt-interactive-disabled)!important;border-color:var(--ds-br-interactive-disabled)!important;background-color:var(--ds-bg-interactive-disabled)!important}@media (hover: hover) and (pointer: fine){.ds-button:hover{outline:none;text-decoration:none;box-shadow:none}.ds-button:hover:not(.-icon):not([disabled]) .ds-button__copy{text-decoration:underline}.ds-button:hover.-primary{background-color:var(--ds-bg-interactive-hover);border-color:var(--ds-bg-interactive-hover);color:var(--ds-txt-interactive-hover)}.ds-button:hover.-secondary{background-color:var(--ds-bg-interactive-neutral-default);border-color:var(--ds-br-interactive-highlight-hover);color:var(--ds-txt-interactive-highlight-hover)}.ds-button:hover.-image{background-color:transparent!important;border-color:transparent!important}.ds-button:hover.-icon{color:var(--ds-icon-interactive-hover)}.ds-button:hover.-icon .ds-button__wrapper{background-color:var(--ds-bg-interactive-hover)}}.ds-button{height:48px;border:1px solid transparent;background-color:transparent;transition:all .1s linear;padding:0 16px}.ds-button::-moz-focus-inner{border:0}.ds-button:focus{outline:none;text-decoration:none;box-shadow:none}.ds-button__wrapper{height:100%;width:100%}.ds-button__copy{text-overflow:ellipsis}.ds-button ds-icon{margin-left:4px}.ds-button.-primary{background-color:var(--ds-bg-interactive-default);border-color:var(--ds-bg-interactive-default);color:var(--ds-txt-interactive-default)}.ds-button.-primary:active{background-color:var(--ds-bg-interactive-hover);border-color:var(--ds-bg-interactive-hover);color:var(--ds-txt-interactive-hover)}.ds-button.-secondary{background:var(--ds-bg-interactive-neutral-default);border-color:var(--ds-br-interactive-highlight);color:var(--ds-txt-interactive-highlight)}.ds-button.-secondary:active{background-color:var(--ds-bg-interactive-neutral-default);border-color:var(--ds-br-interactive-highlight-hover);color:var(--ds-txt-interactive-highlight-hover)}.ds-button.-primary:active,.ds-button.-secondary:active{box-shadow:inset 4px 4px 4px #0000004d}.ds-button.-image{padding:0!important;background-color:transparent!important;border-color:transparent!important}.ds-button.-image:disabled{border-color:transparent!important}.ds-button.-image:active{box-shadow:none;background-color:transparent!important;border-color:transparent!important}.ds-button.-icon{width:48px;color:var(--ds-icon-interactive-default-neutral);padding:0}.ds-button.-icon ds-icon{margin-left:0;margin-right:0}.ds-button.-icon .ds-button__wrapper{box-sizing:border-box;border-radius:50%;height:32px;width:32px;border:1px solid transparent;transition:all .1s linear;background-color:var(--ds-bg-interactive-neutral-default)}.ds-button.-icon:active{color:var(--ds-icon-interactive-hover)}.ds-button.-icon:active .ds-button__wrapper{background-color:var(--ds-bg-interactive-hover)}.ds-button.-icon:active .ds-button__wrapper{box-shadow:inset 4px 4px 4px #0000004d}.ds-button.-icon:disabled{pointer-events:none}.ds-button.-icon:disabled.-transparent .ds-button__wrapper{border-color:transparent;background-color:transparent}.ds-button.-transparent .ds-button__wrapper{background-color:transparent}.ds-button__image{width:100%;max-width:100%}@media (hover: hover) and (pointer: fine){.ds-link:hover{text-decoration:none;outline:none;box-shadow:none}.ds-link:hover .ds-link__copy{text-decoration:underline}.ds-link:hover.-cta .ds-link__copy{text-decoration-thickness:3px!important}}.ds-link:focus{text-decoration:none;outline:none;box-shadow:none}.ds-link__container{min-height:48px}.ds-link ds-icon{vertical-align:sub}@media all and (-ms-high-contrast: none),(-ms-high-contrast: active){.ds-link ds-icon{vertical-align:top}}.ds-link ds-icon.right{margin-left:4px}.ds-link.-cta .ds-link__copy{text-decoration:underline}@-webkit-keyframes sk-rotate{to{-webkit-transform:rotate(360deg)}}@-webkit-keyframes sk-bounce{0%,to{-webkit-transform:scale(0)}50%{-webkit-transform:scale(1)}}.dsa-ad{background-image:var(--dsa-ad-bg-image);background-repeat:no-repeat;background-position-x:var(--dsa-ad-bg-positionX);background-position-y:var(--dsa-ad-bg-positionY);background-size:var(--dsa-ad-bg-size)}@media (min-width: 900px){.dsa-ad{background-image:var(--dsa-ad-bg-imageMd);background-position-x:var(--dsa-ad-bg-positionXMd);background-position-y:var(--dsa-ad-bg-positionYMd);background-size:var(--dsa-ad-bg-sizeMd)}}.dsa-layout>.row>*{display:block}ds-icon{display:inline-flex;justify-content:center}ds-icon.-size-24{min-width:24px;width:24px;height:24px}ds-icon.-size-24 .ds-icon{font-size:2.4rem;line-height:24px}main{margin-top:80px}@media (min-width: 1200px){main{margin-top:128px}}.rich-text-wrapper>*:not(:last-child){margin-bottom:16px!important}
+</style>
+  <link rel="stylesheet" href="styles-QPKVK6JF.css" media="print" onload="this.media='all'">
+  <noscript>
+   <link rel="stylesheet" href="styles-QPKVK6JF.css">
+  </noscript>
+  <script type="application/ld+json" id="homepage-schema">{"@context":"https://schema.org","@type":"Corporation","name":"Rogers Bank","url":"https://www.rogersbank.com/en","logo":"https://www.rogers-assets.com/global-elements/rogers/rb/logo_en.png","description":"Rogers Bank has been delivering innovative credit cards to Canadians for more than a decade. Rogers Bank’s products and services help customers get more out of Rogers, rewarding customers for their everyday spending and offering more flexible financing options for new devices."}</script>
+  <title>Rogers Bank credit cards. Cash back rewards and more | Rogers Bank</title>
+  <meta property="og:title" content="Rogers Bank credit cards. Cash back rewards and more | Rogers Bank">
+  <meta name="description" content="The Rogers Mastercard and Rogers Red World Elite Mastercard offer up to 3% cash back rewards with no annual fee.">
+  <meta property="og:description" content="The Rogers Mastercard and Rogers Red World Elite Mastercard offer up to 3% cash back rewards with no annual fee.">
+  <link rel="canonical" href="https://www.rogersbank.com/en">
+  <meta property="og:url" content="https://www.rogersbank.com/en">
+  <meta name="google-site-verification" content="X6irj5jrViJHqXfRiLMx503F2u4TwN42Ygd2ZIe_e_c">
+  <link rel="alternate" hreflang="en" href="https://www.rogersbank.com/en">
+  <link rel="alternate" hreflang="fr" href="https://www.rogersbank.com/fr">
+  <link rel="alternate" hreflang="x-default" href="https://www.rogersbank.com/en">
+  <meta property="og:image" content="https://www.rogers-assets.com/global-elements/rogers/rb/logo_en.png">
+  <style ng-app-id="ng">.cookie-popup[_ngcontent-ng-c30074797]{position:fixed;bottom:0;left:50%;transform:translate(-50%);background-color:#f1fdff;padding:15px;box-shadow:0 0 10px #0003;width:100%;z-index:99}.cookie-popup[_ngcontent-ng-c30074797]   p[_ngcontent-ng-c30074797]{margin:0;font-size:16px}.cookie-popup[_ngcontent-ng-c30074797]   .head_cookie[_ngcontent-ng-c30074797]{font-weight:700;color:#003d46}.cookie-popup[_ngcontent-ng-c30074797]   button[_ngcontent-ng-c30074797]{background-color:#f1fdff;color:#003d46;border:none;padding:10px 20px;cursor:pointer;border-radius:5px}.cookie-popup[_ngcontent-ng-c30074797]   button[_ngcontent-ng-c30074797]:hover{color:#003d46}.icon_cookie[_ngcontent-ng-c30074797]{padding-right:1rem}.rds-icon-close[_ngcontent-ng-c30074797]:before{content:"\e901";color:#003d46!important}  .rds-icon-info-filled:before{content:"\e99a";color:#003d46!important}</style>
+  <style ng-app-id="ng">.inspect-mode{margin:8px;padding:4px 8px 8px;border:rgb(71,11,71) 3px solid;border-radius:4px;height:auto!important}.inspect-mode-link{display:block;color:#470b47;cursor:pointer;padding-bottom:8px}[mode=dark] .inspect-mode{border-color:silver}[mode=dark] .inspect-mode-link{color:#fff!important}
+</style>
+  <style ng-app-id="ng">.ds-expander__expansionArea[_ngcontent-ng-c476109515]{opacity:0}.-collapsed[_ngcontent-ng-c476109515]{visibility:hidden;opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1)}.-semiExpanded[_ngcontent-ng-c476109515]{visibility:visible;opacity:1;transition:opacity .4s cubic-bezier(.4,0,.2,1),max-height .4s cubic-bezier(.4,0,.2,1)}.-expanded[_ngcontent-ng-c476109515]{visibility:visible;opacity:1;transition:opacity .4s cubic-bezier(.4,0,.2,1),max-height cubic-bezier(.4,0,.2,1)}ds-filter[_nghost-ng-c476109515]   .-collapsed[_ngcontent-ng-c476109515], ds-filter   [_nghost-ng-c476109515]   .-collapsed[_ngcontent-ng-c476109515]{transition:none}</style> 
+  <script>var w=window;if(w.performance||w.mozPerformance||w.msPerformance||w.webkitPerformance){var d=document;AKSB=w.AKSB||{},AKSB.q=AKSB.q||[],AKSB.mark=AKSB.mark||function(e,_){AKSB.q.push(["mark",e,_||(new Date).getTime()])},AKSB.measure=AKSB.measure||function(e,_,t){AKSB.q.push(["measure",e,_,t||(new Date).getTime()])},AKSB.done=AKSB.done||function(e){AKSB.q.push(["done",e])},AKSB.mark("firstbyte",(new Date).getTime()),AKSB.prof={custid:"912542",ustr:"",originlat:"0",clientrtt:"26",ghostip:"23.42.150.15",ipv6:false,pct:"10",clientip:"72.38.8.221",requestid:"c438b08c",region:"47855",protocol:"",blver:14,akM:"dsci",akN:"ae",akTT:"O",akTX:"1",akTI:"c438b08c",ai:"572448",ra:"false",pmgn:"",pmgi:"",pmp:"",qc:""},function(e){var _=d.createElement("script");_.async="async",_.src=e;var t=d.getElementsByTagName("script"),t=t[t.length-1];t.parentNode.insertBefore(_,t)}(("https:"===d.location.protocol?"https:":"http:")+"//ds-aksb-a.akamaihd.net/aksb.min.js")}</script> 
+ </head> 
+ <body> <!--Do NOT remove hidden <p> and <a> tags. Needed for Analytics. Especially if main content loads slowly--> 
+  <p hidden></p> <a hidden></a> <!--    https://reqcentral.com/browse/CU-45887--> <!--    <div id="divAppLoading">--> <!--      <svg--> <!--        class="svgLoader"--> <!--        width="65px"--> <!--        height="65px"--> <!--        viewBox="0 0 66 66"--> <!--        xmlns="http://www.w3.org/2000/svg"--> <!--      >--> <!--        <circle--> <!--          fill="none"--> <!--          stroke-width="6"--> <!--          stroke-linecap="round"--> <!--          cx="33"--> <!--          cy="33"--> <!--          r="30"--> <!--        ></circle>--> <!--      </svg>--> <!--    </div>--> <ge-header config="{&quot;isHeaderEnabled&quot;:true}"></ge-header> <app-root _nghost-ng-c2219046469 ng-version="17.2.2" ng-server-context="ssg">
+   <main _ngcontent-ng-c2219046469 id="mainContent" tabindex="-1">
+    <router-outlet _ngcontent-ng-c2219046469></router-outlet><ng-component class="ng-star-inserted">
+     <div id="divDynamicPage" class="ng-star-inserted">
+      <div class="ng-star-inserted">
+       <ui-block-alert class="ng-star-inserted">
+        <ui-block-inspector data-testid="alert-3BCCYoAMCMJkULyWQN2jqA" class="ng-star-inserted">
+         <div class="ng-star-inserted">
+          <!----><a id="3BCCYoAMCMJkULyWQN2jqA"></a><!----><dsa-alert class="ng-tns-c1598679632-0 d-block ng-star-inserted" id="dsa-alert-2">
+           <div class="ng-trigger ng-trigger-alertSlideUp ng-tns-c1598679632-0 dsa-alert ds-bg-feedback-info b-solid b-1 ds-br-feedback-info ng-star-inserted">
+            <div class="dsa-alert__wrapper container position-relative py-16 d-flex flex-column flex-md-row align-items-start ng-tns-c1598679632-0 pr-72 pr-md-80">
+             <div class="dsa-alert__copy flex-grow-1 d-flex ng-tns-c1598679632-0">
+              <ds-icon class="mr-8 ng-tns-c1598679632-0 -size-24 ng-star-inserted" style>
+               <span role="img" class="ds-icon d-inline-flex rds-icon-info-filled ds-icon-feedback-info" aria-hidden="true"><!----><!----></span>
+              </ds-icon><!---->
+              <div aria-live="polite" role="alert" class="ng-tns-c1598679632-0 ng-star-inserted" style>
+               <!---->
+               <p class="dsa-alert__copyBody ds-body-r mb-0 mw-content ng-tns-c1598679632-0 ng-star-inserted"></p>
+               <div class="rich-text-wrapper">
+                <p>Due to the Canada Post labour disruption, there will be delays in mailing physical statements and cards. Electronic statements are available by signing in to online banking or the Rogers Bank app.</p>
+               </div>
+               <p></p><!---->
+              </div><!---->
+             </div><!----><button ds-button variant="icon" class="dsa-alert__close position-absolute top-4 right-16 ng-tns-c1598679632-0 ds-button ds-corners ds-pointer text-center mw-100 -icon d-inline-flex justify-content-center align-items-center -large -transparent text-no-decoration ng-star-inserted" aria-label="Close" tabindex="0" style><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100 sr-only"><!----></span>
+               <ds-icon name="close" class="-size-24 ng-star-inserted">
+                <span role="img" class="ds-icon d-inline-flex rds-icon-close" aria-hidden="true"><!----><!----></span>
+               </ds-icon><!----><!----></span></button><!---->
+            </div>
+           </div><!---->
+          </dsa-alert>
+         </div><!---->
+        </ui-block-inspector><!---->
+       </ui-block-alert><!----><!----><default-page class="ng-star-inserted">
+        <ngx-dynamic-hooks class="ng-star-inserted">
+         <div class="rich-text-wrapper"></div>
+        </ngx-dynamic-hooks><!---->
+        <ui-block-mosaic class="ng-star-inserted">
+         <ui-block-inspector data-testid="mosaic-undefined" class="ng-star-inserted">
+          <div class="ng-star-inserted">
+           <!----><a id="undefined"></a><!---->
+           <div class="container">
+            <div class="row">
+             <div class="col-12 col-md-8 mb-24 mb-md-0">
+              <ui-block-ad>
+               <ui-block-inspector data-testid="ad-155utQT9g14BsfaJW2jlIK" class="ng-star-inserted">
+                <div class="h-100 ng-star-inserted">
+                 <!----><a id="155utQT9g14BsfaJW2jlIK"></a><!----><dsa-ad mode="dark" style="--dsa-ad-bg-image: url(//images.ctfassets.net/q52gnekwj7nu/5U5DZHkrI3PZfyXp3JVtOD/acb335337fd4f887cd374fefe59e25fe/AdLarge_Desktop_Background_iPhone_16P_Mastercard_Dark_BG.png); --dsa-ad-bg-imagemd: url(//images.ctfassets.net/q52gnekwj7nu/5U5DZHkrI3PZfyXp3JVtOD/acb335337fd4f887cd374fefe59e25fe/AdLarge_Desktop_Background_iPhone_16P_Mastercard_Dark_BG.png); --dsa-ad-bg-positionx: right; --dsa-ad-bg-positionxmd: right; --dsa-ad-bg-positiony: bottom; --dsa-ad-bg-positionymd: bottom; --dsa-ad-bg-size: contain; --dsa-ad-bg-sizemd: contain;">
+                  <div class="dsa-ad h-100 ds-bg-body-default">
+                   <div class="h-100">
+                    <div class="row h-100 ng-star-inserted">
+                     <div class="col-12 col-md-9">
+                      <div class="p-16 p-md-40 pr-md-0">
+                       <div class="d-flex flex-column gap-24">
+                        <div class="d-flex flex-column gap-12">
+                         <div class="d-md-none ng-star-inserted">
+                          <!----><!---->
+                          <div class="ratio-16by9 ng-star-inserted"></div><!----><!---->
+                         </div><!----><!---->
+                         <h1 class="dsa-ad__headingH1 ds-title-1 mb-0 ng-star-inserted">Now get iPhone 16 Pro with 50% lower monthly payments*</h1><!----><!----><!----><!----><!----><!----><!----><!---->
+                         <p class="mb-0 text-semi ds-body-l ng-star-inserted">No interest, no mobile term contract needed. <br>Only with a Rogers credit card.</p><!----><!----><!----><!---->
+                        </div>
+                        <div class="dsa-ad__ctas d-flex flex-wrap flex-column flex-md-row gap-16 ng-star-inserted">
+                         <div class="ng-star-inserted">
+                          <dsa-cta class="dsa-ad__cta w-md-auto w-100 d-inline-flex mw-100">
+                           <!----><!----><!---->
+                           <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large text-no-decoration ng-star-inserted" href="https://www.rogers.com/mobility/device-financing?setLanguage=en" target="_blank" aria-label="Learn More iPhone 16 Pro with Rogers credit card opens in a new window" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100"><span>Learn More</span><!----></span>
+                             <ds-icon class="-size-24 ng-star-inserted">
+                              <span role="img" class="ds-icon d-inline-flex rds-icon-open-new" aria-hidden="true"><!----><!----></span>
+                             </ds-icon><!----><!----><!----></span></a><!---->
+                          </dsa-cta>
+                         </div><!---->
+                        </div><!----><!---->
+                       </div>
+                      </div>
+                     </div>
+                     <div class="d-none d-md-block col-md-3 align-self-end ng-star-inserted">
+                      <!----><!---->
+                      <div class="ratio-16by9 ng-star-inserted"></div><!----><!---->
+                     </div><!---->
+                    </div><!----><!----><!----><!----><!----><!---->
+                   </div>
+                  </div><!----><!----><!----><!----><!----><!----><!----><!----><!---->
+                 </dsa-ad>
+                </div><!---->
+               </ui-block-inspector><!---->
+              </ui-block-ad>
+             </div>
+             <div class="col-12 col-md-4 ng-star-inserted">
+              <div class="h-100 d-flex flex-column gap-24">
+               <ui-block-ad>
+                <ui-block-inspector data-testid="ad-2ul16CJuUo5VINxm0WeXuR" class="ng-star-inserted">
+                 <div class="h-100 ng-star-inserted">
+                  <!----><a id="2ul16CJuUo5VINxm0WeXuR"></a><!----><dsa-ad mode="light" style="--dsa-ad-bg-image: none; --dsa-ad-bg-imagemd: none; --dsa-ad-bg-positionx: right; --dsa-ad-bg-positionxmd: right; --dsa-ad-bg-positiony: bottom; --dsa-ad-bg-positionymd: bottom; --dsa-ad-bg-size: contain; --dsa-ad-bg-sizemd: contain;">
+                   <div class="dsa-ad h-100 ds-bg-body-container">
+                    <div class="h-100">
+                     <!----><!---->
+                     <div class="p-16 d-flex flex-column gap-12 ng-star-inserted">
+                      <div class="d-flex flex-column gap-12">
+                       <!---->
+                       <p class="dsa-ad__headingP ds-title-4 text-bold mb-0 ng-star-inserted">Get $100 in credits with Rogers credit card.</p><!----><!----><!----><!---->
+                       <p class="mb-0 text-semi ds-body-r ng-star-inserted">Purchase any Xfinity Internet &amp; TV bundle and get $100 in credits on your Rogers credit card statements.**</p><!----><!---->
+                      </div>
+                      <div class="row ng-star-inserted">
+                       <div class="col-12 col-md-7">
+                        <div class="d-flex flex-column gap-24">
+                         <!----><!---->
+                         <div class="dsa-ad__ctas d-flex flex-wrap flex-column flex-md-row gap-16 ng-star-inserted">
+                          <div class="ng-star-inserted">
+                           <dsa-cta class="dsa-ad__cta w-md-auto w-100 d-inline-flex mw-100">
+                            <!----><!----><!---->
+                            <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large text-no-decoration ng-star-inserted" href="https://www.rogers.com/bundles/offers?icid=R_IGN_IM4_53Z7J1&amp;setLanguage=en" target="_blank" aria-label="Get it Now Get it Now opens in a new window" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100"><span>Get it Now</span><!----></span>
+                              <ds-icon class="-size-24 ng-star-inserted">
+                              <span role="img" class="ds-icon d-inline-flex rds-icon-open-new" aria-hidden="true"><!----><!----></span>
+                              </ds-icon><!----><!----><!----></span></a><!---->
+                           </dsa-cta>
+                          </div>
+                          <div class="ng-star-inserted">
+                           <dsa-cta class="dsa-ad__cta w-md-auto w-100 d-inline-flex mw-100">
+                            <!----><!----><!---->
+                            <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large text-no-decoration ng-star-inserted" href="/en/compare_cards" aria-label="Compare cards Compare cards" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100"><span>Compare cards</span><!----></span><!----><!----><!----></span></a><!---->
+                           </dsa-cta>
+                          </div><!---->
+                         </div><!----><!---->
+                        </div>
+                       </div>
+                       <div class="d-none d-md-block col-12 col-md-5 align-self-end ng-star-inserted">
+                        <ds-picture class="ng-star-inserted">
+                         <span class="ds-picture d-block ds-no-overflow ratio-16by9 ratio-md-1by1 -lifestyle">
+                          <picture>
+                           <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                           <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                           <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                           <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="RESI Offer" class="ng-star-inserted"><!---->
+                          </picture></span><!----><!---->
+                        </ds-picture><!----><!---->
+                       </div><!---->
+                      </div><!---->
+                     </div>
+                     <div class="d-block d-md-none ng-star-inserted">
+                      <ds-picture class="ng-star-inserted">
+                       <span class="ds-picture d-block ds-no-overflow ratio-16by9 ratio-md-1by1 -lifestyle">
+                        <picture>
+                         <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                         <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                         <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="RESI Offer" class="ng-star-inserted"><!---->
+                        </picture></span><!----><!---->
+                      </ds-picture><!----><!----><!----><!---->
+                     </div><!----><!----><!----><!---->
+                    </div>
+                   </div><!----><!----><!----><!----><!----><!----><!----><!----><!---->
+                  </dsa-ad>
+                 </div><!---->
+                </ui-block-inspector><!---->
+               </ui-block-ad><ui-block-ad class="ng-star-inserted">
+                <ui-block-inspector data-testid="ad-5LmWORxmTXTAHvPyQTdeAZ" class="ng-star-inserted">
+                 <div class="h-100 ng-star-inserted">
+                  <!----><a id="5LmWORxmTXTAHvPyQTdeAZ"></a><!----><dsa-ad mode="campaign" style="--dsa-ad-bg-image: none; --dsa-ad-bg-imagemd: none; --dsa-ad-bg-positionx: right; --dsa-ad-bg-positionxmd: right; --dsa-ad-bg-positiony: bottom; --dsa-ad-bg-positionymd: bottom; --dsa-ad-bg-size: contain; --dsa-ad-bg-sizemd: contain;">
+                   <div class="dsa-ad h-100 ds-bg-body-default">
+                    <div class="h-100">
+                     <!----><!---->
+                     <div class="p-16 d-flex flex-column gap-12 ng-star-inserted">
+                      <div class="d-flex flex-column gap-12">
+                       <!---->
+                       <p class="dsa-ad__headingP ds-title-4 text-bold mb-0 ng-star-inserted">New card for new beginnings. </p><!----><!----><!----><!---->
+                       <p class="mb-0 text-semi ds-body-r ng-star-inserted">With the Rogers Red Mastercard you get the maximum credit based on your home country credit history*. </p><!----><!---->
+                      </div>
+                      <div class="row ng-star-inserted">
+                       <div class="col-12 col-md-7">
+                        <div class="d-flex flex-column gap-24">
+                         <!----><!---->
+                         <div class="dsa-ad__ctas d-flex flex-wrap flex-column flex-md-row gap-16 ng-star-inserted">
+                          <div class="ng-star-inserted">
+                           <dsa-cta class="dsa-ad__cta w-md-auto w-100 d-inline-flex mw-100">
+                            <!----><!----><!---->
+                            <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large text-no-decoration ng-star-inserted" href="/en/credit-card-for-newcomers" aria-label="Learn More" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100"><span>Learn More</span><!----></span><!----><!----><!----></span></a><!---->
+                           </dsa-cta>
+                          </div><!---->
+                         </div><!----><!---->
+                        </div>
+                       </div>
+                       <div class="d-none d-md-block col-12 col-md-5 align-self-end ng-star-inserted">
+                        <ds-picture class="ng-star-inserted">
+                         <span class="ds-picture d-block ds-no-overflow ratio-16by9 ratio-md-1by1 -lifestyle">
+                          <picture>
+                           <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                           <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                           <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                           <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Newcomers" class="ng-star-inserted"><!---->
+                          </picture></span><!----><!---->
+                        </ds-picture><!----><!---->
+                       </div><!---->
+                      </div><!---->
+                     </div>
+                     <div class="d-block d-md-none ng-star-inserted">
+                      <ds-picture class="ng-star-inserted">
+                       <span class="ds-picture d-block ds-no-overflow ratio-16by9 ratio-md-1by1 -lifestyle">
+                        <picture>
+                         <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                         <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                         <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Newcomers" class="ng-star-inserted"><!---->
+                        </picture></span><!----><!---->
+                      </ds-picture><!----><!----><!----><!---->
+                     </div><!----><!----><!----><!---->
+                    </div>
+                   </div><!----><!----><!----><!----><!----><!----><!----><!----><!---->
+                  </dsa-ad>
+                 </div><!---->
+                </ui-block-inspector><!---->
+               </ui-block-ad><!---->
+              </div>
+             </div><!---->
+            </div>
+           </div>
+          </div><!---->
+         </ui-block-inspector><!---->
+        </ui-block-mosaic><!----><!---->
+        <ui-block-layout-container class="ng-star-inserted">
+         <ui-block-inspector data-testid="layout-container-3kQLNSeAqN5w7hsIWDTVLD" class="ng-star-inserted">
+          <div class="ng-star-inserted">
+           <!----><a id="3kQLNSeAqN5w7hsIWDTVLD"></a><!---->
+           <div data-testid="ui-block-layout-container-div" class="ds-bg-body-container pb-40 pb-md-56 pt-40 pt-md-56" mode="light">
+            <div class="d-flex flex-column gap-24 gap-md-32 container">
+             <ui-block-content-block class="ng-star-inserted">
+              <ui-block-inspector data-testid="content-block-1ftMG1WEUVDy8eyHL9eKHC" class="ng-star-inserted">
+               <div class="ng-star-inserted">
+                <!----><a id="1ftMG1WEUVDy8eyHL9eKHC"></a><!---->
+                <div class="d-flex flex-column gap-24 gap-md-32">
+                 <h2 class="ui-block-content__heading ds-title-2 mb-0 text-center ng-star-inserted">There’s a Rogers Bank credit card that’s right for you</h2><!---->
+                 <div class="ui-block-content__copy text-center ng-star-inserted">
+                  <div class="rich-text-wrapper"></div>
+                 </div><!---->
+                 <div class="ui-block-content__components d-flex flex-column gap-24 gap-md-32 ng-star-inserted">
+                  <ui-block-layout-container-element class="ng-star-inserted">
+                   <ui-block-inspector data-testid="layout-container-element5q3jkgWvGY1VfWndYs6gw9" class="ng-star-inserted">
+                    <div class="ng-star-inserted">
+                     <!----><a id="5q3jkgWvGY1VfWndYs6gw9"></a><!----><dsa-layout class="w-100">
+                      <div class="dsa-layout">
+                       <div class="row justify-content-center">
+                        <ui-block-featured-element class="ng-star-inserted">
+                         <ui-block-inspector data-testid="featured-element-7gGHAx7o9JqpDQR6nWys7C" class="ng-star-inserted">
+                          <div class="h-100 ng-star-inserted">
+                           <!----><a id="7gGHAx7o9JqpDQR6nWys7C"></a><!---->
+                           <div class="h-100">
+                            <dsa-offer-tile class="ng-star-inserted">
+                             <ds-tile type="informational" class="dsa-offerTile">
+                              <div class="ds-tile h-100 b-solid b-1 ds-no-overflow ds-corners ds-bg-body-container ds-br-body-default">
+                              <div class="h-100 d-flex flex-column justify-content-between">
+                              <div class="dsa-offerTile__top position-relative">
+                              <ds-picture>
+                              <span class="ds-picture d-block ds-no-overflow ratio-1by1 -product">
+                              <picture>
+                              <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Rogers Mastercard image" class="ng-star-inserted"><!---->
+                              </picture></span><!----><!---->
+                              </ds-picture><!----><!---->
+                              <div class="px-16 px-md-24 dsa-offerTile__deviceInfo pt-16">
+                              <!---->
+                              <p class="dsa-offerTile__title ds-title-3 mb-0">Rogers Red Mastercard®</p>
+                              <p class="dsa-offerTile__copy ds-body-r mt-16 ng-star-inserted"></p>
+                              <div class="rich-text-wrapper"></div>
+                              <p></p><!---->
+                              </div>
+                              </div>
+                              <div class="dsa-offerTile__ctaContainer px-16 py-24 px-md-24 ng-star-inserted">
+                              <dsa-cta class="dsa-offerTile__cta w-100 d-inline-flex mw-100 ng-star-inserted">
+                              <!----><!----><!---->
+                              <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large text-no-decoration ng-star-inserted" href="/rogers_red_mastercard_details" aria-label="Learn More" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100"><span>Learn More</span><!----></span><!----><!----><!----></span></a><!---->
+                              </dsa-cta><!---->
+                              </div><!---->
+                              </div>
+                              </div>
+                             </ds-tile>
+                            </dsa-offer-tile><!----><!----><!----><!----><!---->
+                           </div>
+                          </div><!---->
+                         </ui-block-inspector><!---->
+                        </ui-block-featured-element><ui-block-featured-element class="ng-star-inserted">
+                         <ui-block-inspector data-testid="featured-element-7xCP5nz07GM6cSZpa8S6kA" class="ng-star-inserted">
+                          <div class="h-100 ng-star-inserted">
+                           <!----><a id="7xCP5nz07GM6cSZpa8S6kA"></a><!---->
+                           <div class="h-100">
+                            <dsa-offer-tile class="ng-star-inserted">
+                             <ds-tile type="informational" class="dsa-offerTile">
+                              <div class="ds-tile h-100 b-solid b-1 ds-no-overflow ds-corners ds-bg-body-container ds-br-body-default">
+                              <div class="h-100 d-flex flex-column justify-content-between">
+                              <div class="dsa-offerTile__top position-relative">
+                              <ds-picture>
+                              <span class="ds-picture d-block ds-no-overflow ratio-1by1 -product">
+                              <picture>
+                              <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Rogers Bank Red World Elite Mastercard" class="ng-star-inserted"><!---->
+                              </picture></span><!----><!---->
+                              </ds-picture><!----><!---->
+                              <div class="px-16 px-md-24 dsa-offerTile__deviceInfo pt-16">
+                              <!---->
+                              <p class="dsa-offerTile__title ds-title-3 mb-0">Rogers Red World Elite® Mastercard®</p>
+                              <p class="dsa-offerTile__copy ds-body-r mt-16 ng-star-inserted"></p>
+                              <div class="rich-text-wrapper"></div>
+                              <p></p><!---->
+                              </div>
+                              </div>
+                              <div class="dsa-offerTile__ctaContainer px-16 py-24 px-md-24 ng-star-inserted">
+                              <dsa-cta class="dsa-offerTile__cta w-100 d-inline-flex mw-100 ng-star-inserted">
+                              <!----><!----><!---->
+                              <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large text-no-decoration ng-star-inserted" href="/rogers_red_worldelite_mastercard_details" aria-label="Learn more" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100"><span>Learn more</span><!----></span><!----><!----><!----></span></a><!---->
+                              </dsa-cta><!---->
+                              </div><!---->
+                              </div>
+                              </div>
+                             </ds-tile>
+                            </dsa-offer-tile><!----><!----><!----><!----><!---->
+                           </div>
+                          </div><!---->
+                         </ui-block-inspector><!---->
+                        </ui-block-featured-element><!---->
+                       </div>
+                      </div>
+                     </dsa-layout>
+                    </div><!---->
+                   </ui-block-inspector><!---->
+                  </ui-block-layout-container-element><ui-block-rich-text class="ng-star-inserted">
+                   <ui-block-inspector data-testid="rich-text-3lUQI7vYmpkvyTfsvHF9a0" class="ng-star-inserted">
+                    <div class="ng-star-inserted">
+                     <!----><a id="3lUQI7vYmpkvyTfsvHF9a0"></a><!---->
+                     <div>
+                      <ngx-dynamic-hooks class="text-center">
+                       <div class="rich-text-wrapper">
+                        <p>Rogers Bank credit cards reward the ways you already spend.</p>
+                       </div>
+                      </ngx-dynamic-hooks>
+                     </div>
+                    </div><!---->
+                   </ui-block-inspector><!---->
+                  </ui-block-rich-text><!---->
+                 </div><!---->
+                 <div class="ui-block-content__ctas ng-star-inserted">
+                  <div class="d-flex flex-column flex-md-row gap-16 align-items-center justify-content-md-center">
+                   <ui-block-cta class="mw-100 ng-star-inserted">
+                    <ui-block-inspector data-testid="cta-2yJ98BSKlSJUZZAdcKQRBc" class="ng-star-inserted">
+                     <div class="ng-star-inserted">
+                      <!----><a id="2yJ98BSKlSJUZZAdcKQRBc"></a><!----><dsa-cta class="d-inline-flex mw-100">
+                       <!----><!----><!---->
+                       <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large text-no-decoration ng-star-inserted" href="/compare_cards" aria-label="Compare Credit Cards" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100"><span>Compare Credit Cards</span><!----></span><!----><!----><!----></span></a><!---->
+                      </dsa-cta>
+                     </div><!---->
+                    </ui-block-inspector><!---->
+                   </ui-block-cta><!---->
+                  </div>
+                 </div><!----><!---->
+                </div>
+               </div><!---->
+              </ui-block-inspector><!---->
+             </ui-block-content-block><!---->
+            </div>
+           </div>
+          </div><!---->
+         </ui-block-inspector><!---->
+        </ui-block-layout-container>
+        <ui-block-layout-container class="ng-star-inserted">
+         <ui-block-inspector data-testid="layout-container-72yxHzhA7129V3OTDBTahJ" class="ng-star-inserted">
+          <div class="ng-star-inserted">
+           <!----><a id="72yxHzhA7129V3OTDBTahJ"></a><!---->
+           <div data-testid="ui-block-layout-container-div" class="ds-bg-body-container pb-40 pb-md-56 pt-40 pt-md-56" mode="light">
+            <div class="d-flex flex-column gap-24 gap-md-32 container">
+             <ui-block-content-block class="ng-star-inserted">
+              <ui-block-inspector data-testid="content-block-7LzITiKsORKhaJT0AaNbXf" class="ng-star-inserted">
+               <div class="ng-star-inserted">
+                <!----><a id="7LzITiKsORKhaJT0AaNbXf"></a><!---->
+                <div class="d-flex flex-column gap-24 gap-md-32">
+                 <h2 class="ui-block-content__heading ds-title-2 mb-0 text-center ng-star-inserted">Your award-winning card for cash back</h2><!---->
+                 <div class="ui-block-content__copy text-center ng-star-inserted">
+                  <div class="rich-text-wrapper">
+                   <p>For the Rogers Red World Elite<sup>®</sup> Mastercard<sup>®</sup></p>
+                  </div>
+                 </div><!---->
+                 <div class="ui-block-content__components d-flex flex-column gap-24 gap-md-32 ng-star-inserted">
+                  <ui-block-layout-container-element class="ng-star-inserted">
+                   <ui-block-inspector data-testid="layout-container-element1TVQNtoPZOwN26PNL1BNcy" class="ng-star-inserted">
+                    <div class="ng-star-inserted">
+                     <!----><a id="1TVQNtoPZOwN26PNL1BNcy"></a><!----><dsa-layout class="w-100">
+                      <div class="dsa-layout">
+                       <div class="row justify-content-center">
+                        <ui-block-featured-element class="ng-star-inserted">
+                         <ui-block-inspector data-testid="featured-element-5jnyXClJMGSDwl8LOd1u8i" class="ng-star-inserted">
+                          <div class="h-100 ng-star-inserted">
+                           <!----><a id="5jnyXClJMGSDwl8LOd1u8i"></a><!---->
+                           <div class="h-100">
+                            <!----><!----><!----><dsa-logo-block class="dsa-logo-block d-block h-100 d-flex flex-column justify-content-between ng-star-inserted">
+                             <div>
+                              <ds-picture ratio="3by2" variant="product">
+                              <span class="ds-picture d-block ds-no-overflow ratio-3by2 -product">
+                              <picture>
+                              <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Rewards Canada Badge" class="ng-star-inserted"><!---->
+                              </picture></span><!----><!---->
+                              </ds-picture>
+                              <p class="dsa-logoBlock__copy ds-body-r mt-16 mb-0 text-center ng-star-inserted"></p>
+                              <div class="rich-text-wrapper">
+                              <p><b class="text-bold">Top No Fee Cash Back Credit Card 2024</b><sup><b class="text-bold">1</b></sup></p>
+                              <p>Rewards Canada</p>
+                              </div>
+                              <p></p><!---->
+                             </div>
+                             <div class="text-center ng-star-inserted">
+                              <!---->
+                             </div><!---->
+                            </dsa-logo-block><!----><!---->
+                           </div>
+                          </div><!---->
+                         </ui-block-inspector><!---->
+                        </ui-block-featured-element><ui-block-featured-element class="ng-star-inserted">
+                         <ui-block-inspector data-testid="featured-element-30UppL9MPiORUq2qk9KCbG" class="ng-star-inserted">
+                          <div class="h-100 ng-star-inserted">
+                           <!----><a id="30UppL9MPiORUq2qk9KCbG"></a><!---->
+                           <div class="h-100">
+                            <!----><!----><!----><dsa-logo-block class="dsa-logo-block d-block h-100 d-flex flex-column justify-content-between ng-star-inserted">
+                             <div>
+                              <ds-picture ratio="3by2" variant="product">
+                              <span class="ds-picture d-block ds-no-overflow ratio-3by2 -product">
+                              <picture>
+                              <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="CreditcardGenius badge" class="ng-star-inserted"><!---->
+                              </picture></span><!----><!---->
+                              </ds-picture>
+                              <p class="dsa-logoBlock__copy ds-body-r mt-16 mb-0 text-center ng-star-inserted"></p>
+                              <div class="rich-text-wrapper">
+                              <p><b class="text-bold">Best Challenger Credit Card 2024</b><sup><b class="text-bold">2</b></sup></p>
+                              <p>creditcardGenius</p>
+                              </div>
+                              <p></p><!---->
+                             </div>
+                             <div class="text-center ng-star-inserted">
+                              <!---->
+                             </div><!---->
+                            </dsa-logo-block><!----><!---->
+                           </div>
+                          </div><!---->
+                         </ui-block-inspector><!---->
+                        </ui-block-featured-element><ui-block-featured-element class="ng-star-inserted">
+                         <ui-block-inspector data-testid="featured-element-4EHf8MGMCkNJWrXa5RvqDC" class="ng-star-inserted">
+                          <div class="h-100 ng-star-inserted">
+                           <!----><a id="4EHf8MGMCkNJWrXa5RvqDC"></a><!---->
+                           <div class="h-100">
+                            <!----><!----><!----><dsa-logo-block class="dsa-logo-block d-block h-100 d-flex flex-column justify-content-between ng-star-inserted">
+                             <div>
+                              <ds-picture ratio="3by2" variant="product">
+                              <span class="ds-picture d-block ds-no-overflow ratio-3by2 -product">
+                              <picture>
+                              <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Hardbacon badge" class="ng-star-inserted"><!---->
+                              </picture></span><!----><!---->
+                              </ds-picture>
+                              <p class="dsa-logoBlock__copy ds-body-r mt-16 mb-0 text-center ng-star-inserted"></p>
+                              <div class="rich-text-wrapper">
+                              <p><b class="text-bold">Best Free Travel Credit Card 2024</b><b class="text-bold"><sup>3</sup></b></p>
+                              <p>Hardbacon</p>
+                              </div>
+                              <p></p><!---->
+                             </div>
+                             <div class="text-center ng-star-inserted">
+                              <!---->
+                             </div><!---->
+                            </dsa-logo-block><!----><!---->
+                           </div>
+                          </div><!---->
+                         </ui-block-inspector><!---->
+                        </ui-block-featured-element><!---->
+                       </div>
+                      </div>
+                     </dsa-layout>
+                    </div><!---->
+                   </ui-block-inspector><!---->
+                  </ui-block-layout-container-element><!---->
+                 </div><!----><!----><!---->
+                </div>
+               </div><!---->
+              </ui-block-inspector><!---->
+             </ui-block-content-block><!---->
+            </div>
+           </div>
+          </div><!---->
+         </ui-block-inspector><!---->
+        </ui-block-layout-container>
+        <ui-block-layout-container class="ng-star-inserted">
+         <ui-block-inspector data-testid="layout-container-5Z8JowyucYI5KvyNpOiWUx" class="ng-star-inserted">
+          <div class="ng-star-inserted">
+           <!----><a id="5Z8JowyucYI5KvyNpOiWUx"></a><!---->
+           <div data-testid="ui-block-layout-container-div" class="ds-bg-body-container pb-40 pb-md-56 pt-40 pt-md-56" mode="light">
+            <div class="d-flex flex-column gap-24 gap-md-32 container">
+             <ui-block-rich-text class="ng-star-inserted">
+              <ui-block-inspector data-testid="rich-text-7jZM3lyBHDPZ9jWa8X6FzS" class="ng-star-inserted">
+               <div class="ng-star-inserted">
+                <!----><a id="7jZM3lyBHDPZ9jWa8X6FzS"></a><!---->
+                <div>
+                 <ngx-dynamic-hooks class="text-center">
+                  <div class="rich-text-wrapper">
+                   <h2 class="ds-title-2">Manage your Rogers Bank credit card anywhere </h2>
+                   <p><br></p>
+                  </div>
+                 </ngx-dynamic-hooks>
+                </div>
+               </div><!---->
+              </ui-block-inspector><!---->
+             </ui-block-rich-text><ui-block-section class="ng-star-inserted">
+              <ui-block-inspector data-testid="section-60XXljMvK5InNJ0Gd33Rss" class="ng-star-inserted">
+               <div class="ng-star-inserted">
+                <!----><a id="60XXljMvK5InNJ0Gd33Rss"></a><!----><dsa-section>
+                 <div class="dsa-section d-flex flex-column flex-md-row">
+                  <!---->
+                  <div class="dsa-section__image col-12 pl-0 pr-0 align-self-md-center -product col-md-6 pl-md-0 pr-md-12">
+                   <!----><ds-picture ratio="16by9" class="ng-star-inserted">
+                    <span class="ds-picture d-block ds-no-overflow ratio-16by9 ratio-md-1by1 -product">
+                     <picture>
+                      <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                      <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                      <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Rogers Bank Mobile App" class="ng-star-inserted"><!---->
+                     </picture></span><!----><!---->
+                   </ds-picture><!---->
+                  </div>
+                  <div class="dsa-section__copy col-12 pl-0 pr-0 pt-16 d-flex flex-column justify-content-center ds-bgcolor-transparent col-md-6 pb-md-16 pr-md-0 pl-md-12">
+                   <div class="dsa-section__copyWrapper pl-md-24">
+                    <!----><!---->
+                    <h2 class="dsa-section__copyHeading2 ds-title-4 mb-16 mb-md-24 ng-star-inserted">Simplified banking,<br> now available anywhere.</h2><!----><!----><!----><!----><!----><!----><!----><!----><!----><ngx-dynamic-hooks class="ng-star-inserted">
+                     <div class="rich-text-wrapper">
+                      <p>The Rogers Bank app is the easiest way to manage your account.</p>
+                     </div>
+                    </ngx-dynamic-hooks><!---->
+                    <div class="d-flex flex-column-reverse">
+                     <!---->
+                     <div class="d-flex flex-wrap ng-star-inserted">
+                      <dsa-cta class="w-100 w-sm-auto mt-16 d-inline-flex mw-100 ng-star-inserted">
+                       <!----><!----><!---->
+                       <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large text-no-decoration ng-star-inserted" href="/mobile_app" aria-label="Rogers Bank App" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100"><span>Rogers Bank App</span><!----></span><!----><!----><!----></span></a><!---->
+                      </dsa-cta><!---->
+                     </div><!---->
+                    </div>
+                   </div>
+                  </div>
+                 </div><!---->
+                </dsa-section>
+               </div><!---->
+              </ui-block-inspector><!---->
+             </ui-block-section><!---->
+            </div>
+           </div>
+          </div><!---->
+         </ui-block-inspector><!---->
+        </ui-block-layout-container>
+        <ui-block-layout-container class="ng-star-inserted">
+         <ui-block-inspector data-testid="layout-container-4xYlhs6OtGYwBWzGWmmSwl" class="ng-star-inserted">
+          <div class="ng-star-inserted">
+           <!----><a id="4xYlhs6OtGYwBWzGWmmSwl"></a><!---->
+           <div data-testid="ui-block-layout-container-div" class="ds-bg-body-default pb-40 pb-md-56 pt-40 pt-md-56" mode="light">
+            <div class="d-flex flex-column gap-24 gap-md-32 container">
+             <ui-block-section class="ng-star-inserted">
+              <ui-block-inspector data-testid="section-6OXFolCds2FSnnIagdthbX" class="ng-star-inserted">
+               <div class="ng-star-inserted">
+                <!----><a id="6OXFolCds2FSnnIagdthbX"></a><!----><dsa-section>
+                 <div class="dsa-section flex-md-row-reverse d-flex flex-column flex-md-row">
+                  <!---->
+                  <div class="dsa-section__image col-12 pl-0 pr-0 align-self-md-center -product col-md-6 pr-md-0 pl-md-12">
+                   <!----><ds-picture ratio="16by9" class="ng-star-inserted">
+                    <span class="ds-picture d-block ds-no-overflow ratio-16by9 ratio-md-1by1 -product">
+                     <picture>
+                      <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                      <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                      <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Successful Mobile Wallet Transaction" class="ng-star-inserted"><!---->
+                     </picture></span><!----><!---->
+                   </ds-picture><!---->
+                  </div>
+                  <div class="dsa-section__copy col-12 pl-0 pr-0 pt-16 d-flex flex-column justify-content-center ds-bgcolor-transparent col-md-6 pb-md-16 pl-md-0 pr-md-12">
+                   <div class="dsa-section__copyWrapper pr-md-24">
+                    <!----><!---->
+                    <h2 class="dsa-section__copyHeading2 ds-title-4 mb-16 mb-md-24 ng-star-inserted">Mobile Wallet for Rogers Bank credit cards is here!</h2><!----><!----><!----><!----><!----><!----><!----><!----><!----><ngx-dynamic-hooks class="ng-star-inserted">
+                     <div class="rich-text-wrapper">
+                      <p>Everything you love about your Rogers Bank credit card, now on your mobile device.</p>
+                     </div>
+                    </ngx-dynamic-hooks><!---->
+                    <div class="d-flex flex-column-reverse">
+                     <!---->
+                     <div class="d-flex flex-wrap ng-star-inserted">
+                      <dsa-cta class="w-100 w-sm-auto mt-16 d-inline-flex mw-100 ng-star-inserted">
+                       <!----><!----><!---->
+                       <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large text-no-decoration ng-star-inserted" href="/mobile_wallet" aria-label="Mobile Wallet" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100"><span>Mobile Wallet</span><!----></span><!----><!----><!----></span></a><!---->
+                      </dsa-cta><!---->
+                     </div><!---->
+                    </div>
+                   </div>
+                  </div>
+                 </div><!---->
+                </dsa-section>
+               </div><!---->
+              </ui-block-inspector><!---->
+             </ui-block-section><!---->
+            </div>
+           </div>
+          </div><!---->
+         </ui-block-inspector><!---->
+        </ui-block-layout-container>
+        <ui-block-layout-container class="ng-star-inserted">
+         <ui-block-inspector data-testid="layout-container-2OD7tX9syLjY9KFp9JQqZa" class="ng-star-inserted">
+          <div class="ng-star-inserted">
+           <!----><a id="2OD7tX9syLjY9KFp9JQqZa"></a><!---->
+           <div data-testid="ui-block-layout-container-div" class="ds-bg-body-container pb-40 pb-md-56 pt-40 pt-md-56" mode="light">
+            <div class="d-flex flex-column gap-24 gap-md-32 container">
+             <ui-block-content-block class="ng-star-inserted">
+              <ui-block-inspector data-testid="content-block-eGZSGhKuBCD2JWR0cJwJz" class="ng-star-inserted">
+               <div class="ng-star-inserted">
+                <!----><a id="eGZSGhKuBCD2JWR0cJwJz"></a><!---->
+                <div class="d-flex flex-column gap-24 gap-md-32">
+                 <h2 class="ui-block-content__heading ds-title-2 mb-0 text-center ng-star-inserted">With a Rogers Bank credit card, you get…</h2><!---->
+                 <div class="ui-block-content__copy text-center ng-star-inserted">
+                  <div class="rich-text-wrapper"></div>
+                 </div><!---->
+                 <div class="ui-block-content__components d-flex flex-column gap-24 gap-md-32 ng-star-inserted">
+                  <ui-block-layout-container-element class="ng-star-inserted">
+                   <ui-block-inspector data-testid="layout-container-element46R2RqvH7rZyJfIahXZX8s" class="ng-star-inserted">
+                    <div class="ng-star-inserted">
+                     <!----><a id="46R2RqvH7rZyJfIahXZX8s"></a><!----><dsa-layout class="w-100">
+                      <div class="dsa-layout">
+                       <div class="row justify-content-center">
+                        <ui-block-featured-element class="ng-star-inserted">
+                         <ui-block-inspector data-testid="featured-element-6ApCxkMjFQQAFRrll0Cr1d" class="ng-star-inserted">
+                          <div class="h-100 ng-star-inserted">
+                           <!----><a id="6ApCxkMjFQQAFRrll0Cr1d"></a><!---->
+                           <div class="h-100">
+                            <!----><!----><dsa-value-prop class="dsa-valueProp d-flex flex-column align-items-center text-center -primary ng-star-inserted">
+                             <!---->
+                             <div class="dsa-value-prop__pictogram ng-star-inserted">
+                              <ds-pictogram class="ds-pictogram">
+                              <span role="img" class="ds-icon d-inline-flex rds-pictogram-money-back" aria-hidden="true"><!----></span>
+                              </ds-pictogram>
+                             </div><!---->
+                             <p class="dsa-valueProp__heading mt-16 mb-0 w-100 ds-title-4 ng-star-inserted">Rewards without Limits</p><!---->
+                             <p class="dsa-valueProp__body ds-body-r mb-0 w-100 mt-16 ng-star-inserted"></p>
+                             <div class="rich-text-wrapper">
+                              <p>Get unlimited cash back rewards for all eligible purchases you make every day, and redeem them anywhere Mastercard is accepted.<sup>5</sup></p>
+                             </div>
+                             <p></p><!---->
+                             <a ds-link class="dsa-valueProp__cta mt-8 ds-link ds-pointer d-inline-flex outline-none mw-100 -cta text-no-decoration ng-star-inserted" href="/rewards" tabindex="0" role="link"><span class="ds-link__container d-flex align-items-center"><span role="text" class="ds-link__wrapper d-inline-block ds-txt-button"><span class="ds-link__copy"> Learn More <!----></span><!---->
+                              <ds-icon name="right" class="right -size-24 ng-star-inserted">
+                              <span role="img" class="ds-icon d-inline-flex rds-icon-right" aria-hidden="true"><!----><!----></span>
+                              </ds-icon><!----></span></span></a><!---->
+                            </dsa-value-prop><!----><!----><!---->
+                           </div>
+                          </div><!---->
+                         </ui-block-inspector><!---->
+                        </ui-block-featured-element><ui-block-featured-element class="ng-star-inserted">
+                         <ui-block-inspector data-testid="featured-element-2weRXBqQvJnlAVV1JzmKZ3" class="ng-star-inserted">
+                          <div class="h-100 ng-star-inserted">
+                           <!----><a id="2weRXBqQvJnlAVV1JzmKZ3"></a><!---->
+                           <div class="h-100">
+                            <!----><!----><dsa-value-prop class="dsa-valueProp d-flex flex-column align-items-center text-center -primary ng-star-inserted">
+                             <!---->
+                             <div class="dsa-value-prop__pictogram ng-star-inserted">
+                              <ds-pictogram class="ds-pictogram">
+                              <span role="img" class="ds-icon d-inline-flex rds-pictogram-security" aria-hidden="true"><!----></span>
+                              </ds-pictogram>
+                             </div><!---->
+                             <p class="dsa-valueProp__heading mt-16 mb-0 w-100 ds-title-4 ng-star-inserted">24/7 Security</p><!---->
+                             <p class="dsa-valueProp__body ds-body-r mb-0 w-100 mt-16 ng-star-inserted"></p>
+                             <div class="rich-text-wrapper">
+                              <p>Everything about your card is designed for maximum security, from automatic fraud prevention and personalized alerts to chip and PIN technology.</p>
+                             </div>
+                             <p></p><!---->
+                             <a ds-link class="dsa-valueProp__cta mt-8 ds-link ds-pointer d-inline-flex outline-none mw-100 -cta text-no-decoration ng-star-inserted" href="/security" tabindex="0" role="link"><span class="ds-link__container d-flex align-items-center"><span role="text" class="ds-link__wrapper d-inline-block ds-txt-button"><span class="ds-link__copy"> Learn More <!----></span><!---->
+                              <ds-icon name="right" class="right -size-24 ng-star-inserted">
+                              <span role="img" class="ds-icon d-inline-flex rds-icon-right" aria-hidden="true"><!----><!----></span>
+                              </ds-icon><!----></span></span></a><!---->
+                            </dsa-value-prop><!----><!----><!---->
+                           </div>
+                          </div><!---->
+                         </ui-block-inspector><!---->
+                        </ui-block-featured-element><ui-block-featured-element class="ng-star-inserted">
+                         <ui-block-inspector data-testid="featured-element-4TO1M3SDLT2DgHWpGFdABP" class="ng-star-inserted">
+                          <div class="h-100 ng-star-inserted">
+                           <!----><a id="4TO1M3SDLT2DgHWpGFdABP"></a><!---->
+                           <div class="h-100">
+                            <!----><!----><dsa-value-prop class="dsa-valueProp d-flex flex-column align-items-center text-center -primary ng-star-inserted">
+                             <!---->
+                             <div class="dsa-value-prop__pictogram ng-star-inserted">
+                              <ds-pictogram class="ds-pictogram">
+                              <span role="img" class="ds-icon d-inline-flex rds-pictogram-family" aria-hidden="true"><!----></span>
+                              </ds-pictogram>
+                             </div><!---->
+                             <p class="dsa-valueProp__heading mt-16 mb-0 w-100 ds-title-4 ng-star-inserted">Balance Protection</p><!---->
+                             <p class="dsa-valueProp__body ds-body-r mb-0 w-100 mt-16 ng-star-inserted"></p>
+                             <div class="rich-text-wrapper">
+                              <p>Group Balance Protection Insurance<sup>6</sup> protects you and your loved ones from the financial impact of unforeseen events.</p>
+                             </div>
+                             <p></p><!---->
+                             <a ds-link class="dsa-valueProp__cta mt-8 ds-link ds-pointer d-inline-flex outline-none mw-100 -cta text-no-decoration ng-star-inserted" href="/help_centre_answers/protection_services" tabindex="0" role="link"><span class="ds-link__container d-flex align-items-center"><span role="text" class="ds-link__wrapper d-inline-block ds-txt-button"><span class="ds-link__copy"> Protection Services <!----></span><!---->
+                              <ds-icon name="right" class="right -size-24 ng-star-inserted">
+                              <span role="img" class="ds-icon d-inline-flex rds-icon-right" aria-hidden="true"><!----><!----></span>
+                              </ds-icon><!----></span></span></a><!---->
+                            </dsa-value-prop><!----><!----><!---->
+                           </div>
+                          </div><!---->
+                         </ui-block-inspector><!---->
+                        </ui-block-featured-element><!---->
+                       </div>
+                      </div>
+                     </dsa-layout>
+                    </div><!---->
+                   </ui-block-inspector><!---->
+                  </ui-block-layout-container-element><!---->
+                 </div><!----><!----><!---->
+                </div>
+               </div><!---->
+              </ui-block-inspector><!---->
+             </ui-block-content-block><!---->
+            </div>
+           </div>
+          </div><!---->
+         </ui-block-inspector><!---->
+        </ui-block-layout-container>
+        <ui-block-layout-container class="ng-star-inserted">
+         <ui-block-inspector data-testid="layout-container-1beDQDXKfRNscVNCIWbE7B" class="ng-star-inserted">
+          <div class="ng-star-inserted">
+           <!----><a id="1beDQDXKfRNscVNCIWbE7B"></a><!---->
+           <div data-testid="ui-block-layout-container-div" class="ds-bg-body-default pb-40 pb-md-56 pt-40 pt-md-56" mode="light">
+            <div class="d-flex flex-column gap-24 gap-md-32 container">
+             <ui-block-rich-text class="ng-star-inserted">
+              <ui-block-inspector data-testid="rich-text-7jZM3lyBHDPZ9jWa8X6FzS" class="ng-star-inserted">
+               <div class="ng-star-inserted">
+                <!----><a id="7jZM3lyBHDPZ9jWa8X6FzS"></a><!---->
+                <div>
+                 <ngx-dynamic-hooks class="text-center">
+                  <div class="rich-text-wrapper">
+                   <h2 class="ds-title-2">Manage your Rogers Bank credit card anywhere </h2>
+                   <p><br></p>
+                  </div>
+                 </ngx-dynamic-hooks>
+                </div>
+               </div><!---->
+              </ui-block-inspector><!---->
+             </ui-block-rich-text><ui-block-section class="ng-star-inserted">
+              <ui-block-inspector data-testid="section-5j9OJ0kMkLGddNDXGsg49I" class="ng-star-inserted">
+               <div class="ng-star-inserted">
+                <!----><a id="5j9OJ0kMkLGddNDXGsg49I"></a><!----><dsa-section>
+                 <div class="dsa-section d-flex flex-column flex-md-row">
+                  <!---->
+                  <div class="dsa-section__image col-12 pl-0 pr-0 align-self-md-center -product col-md-6 pl-md-0 pr-md-12">
+                   <!----><ds-picture ratio="16by9" class="ng-star-inserted">
+                    <span class="ds-picture d-block ds-no-overflow ratio-16by9 ratio-md-1by1 -product">
+                     <picture>
+                      <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                      <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                      <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Rogers Bank App" class="ng-star-inserted"><!---->
+                     </picture></span><!----><!---->
+                   </ds-picture><!---->
+                  </div>
+                  <div class="dsa-section__copy col-12 pl-0 pr-0 pt-16 d-flex flex-column justify-content-center ds-bgcolor-transparent col-md-6 pb-md-16 pr-md-0 pl-md-12">
+                   <div class="dsa-section__copyWrapper pl-md-24">
+                    <!----><!---->
+                    <h2 class="dsa-section__copyHeading2 ds-title-4 mb-16 mb-md-24 ng-star-inserted"> Easy to earn, easy to redeem</h2><!----><!----><!----><!----><!----><!----><!----><!----><!----><ngx-dynamic-hooks class="ng-star-inserted">
+                     <div class="rich-text-wrapper">
+                      <p>Earn unlimited cash back rewards anywhere Mastercard is accepted, and redeem them for everyday purchases like gas and groceries, big ticket items, or apply them directly to your Rogers, Fido, or chatr bill.</p>
+                      <p>Redeem your rewards instantly with the Rogers Bank app.</p>
+                      <div class="d-block">
+                       <ui-block-cta class="ng-star-inserted">
+                        <ui-block-inspector data-testid="cta-5rmgRrgLMM1pMJntWZCNep" class="ng-star-inserted">
+                         <div class="ng-star-inserted">
+                          <!----><a id="5rmgRrgLMM1pMJntWZCNep"></a><!----><dsa-cta class="d-inline-flex mw-100">
+                           <!----><!----><!---->
+                           <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large text-no-decoration ng-star-inserted" href="/rewards" aria-label="Learn More" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100"><span>Learn More</span><!----></span><!----><!----><!----></span></a><!---->
+                          </dsa-cta>
+                         </div><!---->
+                        </ui-block-inspector><!---->
+                       </ui-block-cta>
+                      </div>
+                      <p><br></p>
+                     </div>
+                    </ngx-dynamic-hooks><!---->
+                    <div class="d-flex flex-column-reverse">
+                     <!---->
+                     <div class="d-flex flex-wrap ng-star-inserted">
+                      <dsa-cta class="w-100 w-sm-auto mt-16 mr-sm-24 d-inline-flex mw-100 ng-star-inserted">
+                       <!----><!----><!---->
+                       <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -image -large text-no-decoration ng-star-inserted" href="https://apps.apple.com/us/app/rogers-bank/id1527119582" target="_blank" aria-label="Download on the App Store Download on the App Store opens in a new window" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><img height="48" width="200" alt class="mh-100 ds-button__image ng-star-inserted" src="https://images.ctfassets.net/q52gnekwj7nu/1H8FGXjC7ZfJhaq6NV1YmP/1ff75a0f06d4b7f76101c9debceee65f/app-store-en.svg"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100 sr-only"><span>Download on the App Store</span><!----></span><!----><!----></span></a><!---->
+                      </dsa-cta><dsa-cta class="w-100 w-sm-auto mt-16 d-inline-flex mw-100 ng-star-inserted">
+                       <!----><!----><!---->
+                       <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -image -large text-no-decoration ng-star-inserted" href="https://play.google.com/store/apps/details?id=com.rogers.banking" target="_blank" aria-label="Get it on Google Play Get it on Google Play opens in a new window" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><img height="48" width="200" alt class="mh-100 ds-button__image ng-star-inserted" src="https://images.ctfassets.net/q52gnekwj7nu/5Xa6iYxzipGK5lfMldOsTR/81e1f8856b9cb84e965d80549a42b29b/google-play-en.svg"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100 sr-only"><span>Get it on Google Play</span><!----></span><!----><!----></span></a><!---->
+                      </dsa-cta><!---->
+                     </div><!---->
+                    </div>
+                   </div>
+                  </div>
+                 </div><!---->
+                </dsa-section>
+               </div><!---->
+              </ui-block-inspector><!---->
+             </ui-block-section><!---->
+            </div>
+           </div>
+          </div><!---->
+         </ui-block-inspector><!---->
+        </ui-block-layout-container>
+        <ui-block-layout-container class="ng-star-inserted">
+         <ui-block-inspector data-testid="layout-container-RF8yzMbULCxnGsEmQsrqQ" class="ng-star-inserted">
+          <div class="ng-star-inserted">
+           <!----><a id="RF8yzMbULCxnGsEmQsrqQ"></a><!---->
+           <div data-testid="ui-block-layout-container-div" class="ds-bg-body-default pb-40 pb-md-56 pt-40 pt-md-56" mode="dark">
+            <div class="d-flex flex-column gap-24 gap-md-32 container">
+             <ui-block-section class="ng-star-inserted">
+              <ui-block-inspector data-testid="section-22WXVbYMEYduULrdDwuhtL" class="ng-star-inserted">
+               <div class="ng-star-inserted">
+                <!----><a id="22WXVbYMEYduULrdDwuhtL"></a><!----><dsa-section>
+                 <div class="dsa-section d-flex flex-column flex-md-row">
+                  <!---->
+                  <div class="dsa-section__image col-12 pl-0 pr-0 align-self-md-center -product col-md-6 pl-md-0 pr-md-12">
+                   <!----><ds-picture ratio="16by9" class="ng-star-inserted">
+                    <span class="ds-picture d-block ds-no-overflow ratio-16by9 ratio-md-1by1 -product">
+                     <picture>
+                      <source media="(max-width: 599.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                      <source media="(min-width: 600px) and (max-width: 899.9px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                      <source media="(min-width: 900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ng-star-inserted">
+                      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Rogers Bank" class="ng-star-inserted"><!---->
+                     </picture></span><!----><!---->
+                   </ds-picture><!---->
+                  </div>
+                  <div class="dsa-section__copy col-12 pl-0 pr-0 pt-16 d-flex flex-column justify-content-center ds-bgcolor-transparent col-md-6 pb-md-16 pr-md-0 pl-md-12">
+                   <div class="dsa-section__copyWrapper pl-md-24">
+                    <!----><!---->
+                    <h2 class="dsa-section__copyHeading2 ds-title-4 mb-16 mb-md-24 ng-star-inserted">Card options for every customer</h2><!----><!----><!----><!----><!----><!----><!----><!----><!----><ngx-dynamic-hooks class="ng-star-inserted">
+                     <div class="rich-text-wrapper">
+                      <p>Learn more about Rogers Bank credit cards to find a card that’s right for you. </p>
+                     </div>
+                    </ngx-dynamic-hooks><!---->
+                    <div class="d-flex flex-column-reverse">
+                     <!---->
+                     <div class="d-flex flex-wrap ng-star-inserted">
+                      <dsa-cta class="w-100 w-sm-auto mt-16 d-inline-flex mw-100 ng-star-inserted">
+                       <!----><!----><!---->
+                       <a ds-button class="w-100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large text-no-decoration ng-star-inserted" href="/compare_cards" aria-label="Get Started" tabindex="0"><span role="text" class="ds-button__wrapper d-flex justify-content-center align-items-center"><!----><span class="ds-button__copy ds-txt-button text-nowrap ds-no-overflow mw-100"><span>Get Started</span><!----></span><!----><!----><!----></span></a><!---->
+                      </dsa-cta><!---->
+                     </div><!---->
+                    </div>
+                   </div>
+                  </div>
+                 </div><!---->
+                </dsa-section>
+               </div><!---->
+              </ui-block-inspector><!---->
+             </ui-block-section><!---->
+            </div>
+           </div>
+          </div><!---->
+         </ui-block-inspector><!---->
+        </ui-block-layout-container><!----><!---->
+       </default-page><!----><!----><!----><!----><!----><!----><!---->
+       <div class="container py-40 py-md-56 ng-star-inserted">
+        <ui-block-legal class="ng-star-inserted">
+         <ui-block-inspector data-testid="legal-IgOLxe3oNqcMKx08BOPAa" class="ng-star-inserted">
+          <div class="ng-star-inserted">
+           <!----><a id="IgOLxe3oNqcMKx08BOPAa"></a><!----><dsa-legal class="ng-tns-c3846839460-1 d-block b-solid b-0 by-1 ds-br-body-secondary ng-star-inserted">
+            <button cdkmonitorelementfocus class="dsa-legal__header group w-100 b-0 d-flex align-items-center justify-content-between py-16 px-16 px-md-24 ds-pointer ds-bgcolor-transparent ds-keyboard-element-focus outline-none ds-moz-focus-inner ds-txt-body-default ng-tns-c3846839460-1" aria-label="<div class=&quot;rich-text-wrapper&quot;><span class=&quot;d-block&quot;>See Full Details</span></div>. " aria-expanded="false" aria-controls="legal-expanderRefId-14">
+             <div class="col-md-8 p-0 text-left ng-tns-c3846839460-1">
+              <span class="dsa-legal__copy mb-0 ds-body-l ng-tns-c3846839460-1 group-hover:text-bold group-keyboard-focused:text-bold">
+               <div class="rich-text-wrapper">
+                <span class="d-block">See Full Details</span>
+               </div></span>
+             </div>
+             <ds-icon name="chevron-down" class="dsa-legal__toggleIcon ds-pointer ml-24 ng-tns-c3846839460-1 ng-trigger ng-trigger-indicatorRotate -size-24" style="transform: rotate(0deg);">
+              <span role="img" class="ds-icon d-inline-flex rds-icon-chevron-down" aria-hidden="true"><!----><!----></span>
+             </ds-icon></button>
+            <ds-expander class="ng-tns-c3846839460-1" _nghost-ng-c476109515>
+             <div _ngcontent-ng-c476109515 tabindex="-1" class="ds-expander__expansionArea outline-none -collapsed ds-no-overflow" data-id="ds-expander__expansionArea-56" aria-hidden="true" style="max-height: 0px;">
+              <div _ngcontent-ng-c476109515>
+               <div class="dsa-legal__expansionArea px-16 px-md-24 pb-16" id="legal-expanderRefId-14">
+                <div class="ds-trim-last pl-0 pr-48 pr-md-0 ng-tns-c3846839460-1 col-md-8">
+                 <p class="ds-body-r mb-16 ng-tns-c3846839460-1 ng-star-inserted"></p>
+                 <div class="rich-text-wrapper">
+                  <p>Offers subject to change without notice. Application approval subject to credit assessment and income verification.</p>
+                  <p>*As compared to financing a phone at full price with $0 down through a Financing Agreement with Rogers Communications Canada Inc. over 24 months without Save &amp; Return and/or promo credits. Offer available to primary cardholders only on purchases of $250 or more on your Rogers Bank credit card made in participating Rogers, Fido or Shaw-branded stores or third-party retail locations offering Rogers products. Terms of 36 or 48 months available. Offer must be accepted by the primary cardholder by submitting the request with a Rogers representative at the time of purchase. Request cannot be made through your online Rogers Bank account or in any other manner. In order to qualify, at the time you submit your request: your account must be in good standing, you must have less than 6 Equal Payment Plans on your account and the outstanding balance on your account must be equal to or greater than the amount of the purchase. It may take up to 10 calendar days after submitting the request form for your purchase to be converted to an Equal Payment Plan. During the term of the Equal Payment Plan, interest will be calculated on the outstanding Equal Payment Plan balance at an annual interest rate of 0%. There is no interest payable from the date of the purchase up to the date the eligible purchase is converted to an Equal Payment Plan. Offer availability for mobile wallet purchases subject to tap limit restrictions at participating retailers. Subject to credit assessment and/or income verification, as applicable. </p>
+                  <p>** <b class="text-bold">Offer Terms and Conditions: </b>Offer available to Rogers Bank credit card primary cardholders who are not already Rogers Internet or Comwave customers. Offer begins on <b class="text-bold">November 7, 2024 and ends on December 31, 2024 at 11:59 pm EST</b> (the “Offer Period”). Get $100 in credits on applicable Rogers Bank credit card statements when you, during the Offer Period: (a) subscribe to an eligible Rogers Xfinity or Comwave Internet package plus an eligible Rogers Xfinity TV/Streaming plan or Comwave TV package, online or in participating Rogers branded stores or third-party retail locations offering Rogers products, and (b) pay your Rogers Xfinity or Comwave bill with your Rogers Bank credit card (Rogers/Comwave account holder and Rogers Bank primary cardholder must be the same). If you are not a cardholder, you must apply for a Rogers Bank credit card during the Offer Period and within 15 days of your Rogers Xfinity or Comwave service subscription. Application must be approved to qualify for the offer. Application approval subject to credit assessment and, if applicable, income verification. After qualifying for the offer, your $100 savings will be applied as two $50 credits on your Rogers Bank statements as follows: (a) the first $50 credit within approximately 3 months, and (b) the second $50 credit within approximately 6 months. Your Rogers Bank and Rogers or Comwave residential services accounts must be open, active and in good standing at the time of the statement credit or it will not be applied. Offer may be changed, cancelled or extended at any time without notice. We may revoke this offer if you appear to be manipulating or abusing it, or are engaged in any suspicious or fraudulent activity, as we may determine in our sole discretion. Rogers and Comwave employees are not eligible for this offer.</p>
+                 </div>
+                 <p></p><!---->
+                 <ol class="mb-16 ng-tns-c3846839460-1 ng-star-inserted">
+                  <li class="ds-body-r mb-0 ng-tns-c3846839460-1 mb-8 ng-star-inserted">
+                   <div class="rich-text-wrapper">
+                    <p>As awarded by <a href="https://www.rewardscanada.ca/" target="_blank" aria-label="Rewards Canada opens in a new window">Rewards Canada</a> in January 2024</p>
+                   </div></li>
+                  <li class="ds-body-r mb-0 ng-tns-c3846839460-1 mb-8 ng-star-inserted">
+                   <div class="rich-text-wrapper">
+                    <p>As awarded by <a href="https://creditcardgenius.ca/blog/best-credit-cards#best-challenger" target="_blank" aria-label="creditcardGenius opens in a new window">creditcardGenius</a> in January 2024.</p>
+                   </div></li>
+                  <li class="ds-body-r mb-0 ng-tns-c3846839460-1 mb-8 ng-star-inserted">
+                   <div class="rich-text-wrapper">
+                    <p>As awarded by <a href="https://www.hardbacon.ca/" target="_blank" aria-label="Hardbacon opens in a new window">Hardbacon</a> in January 2024.</p>
+                   </div></li>
+                  <li class="ds-body-r mb-0 ng-tns-c3846839460-1 mb-8 ng-star-inserted">
+                   <div class="rich-text-wrapper">
+                    <p>As awarded by <a href="https://moneygenius.ca/blog/best-credit-cards#best-costco-credit-card" target="_blank" aria-label="moneyGenius opens in a new window">moneyGenius</a> in January 2024.</p>
+                   </div></li>
+                  <li class="ds-body-r mb-0 ng-tns-c3846839460-1 mb-8 ng-star-inserted">
+                   <div class="rich-text-wrapper">
+                    <p>Minimum purchase and redemption amount of $10. Cash back rewards apply up to lesser of purchase amount or rewards balance. Some exceptions apply, including cash advances and cash equivalents. Rewards are not refundable. Account must be in good standing. See Reward Program Terms and Conditions, <a href="/legal" target="_self" aria-label="rogersbank.com/legal">rogersbank.com/legal</a></p>
+                   </div></li>
+                  <li class="ds-body-r mb-0 ng-tns-c3846839460-1 ng-star-inserted">
+                   <div class="rich-text-wrapper">
+                    <p>Rogers Bank optional Group Balance Protection group insurance is underwritten by Canadian Premier Life Insurance Company.</p>
+                   </div></li><!---->
+                 </ol><!---->
+                 <p class="ds-body-r mb-16 ng-tns-c3846839460-1 ng-star-inserted"></p>
+                 <div class="rich-text-wrapper">
+                  <p><sup>®/TM</sup> Mastercard and World Elite are registered trademarks and the circles design is a trademark of Mastercard International Incorporated. Used under license.</p>
+                 </div>
+                 <p></p>
+                 <p class="ds-body-r mb-16 ng-tns-c3846839460-1 ng-star-inserted"></p>
+                 <div class="rich-text-wrapper">
+                  <p><sup>TM</sup> Rogers and Mobius Design, Rogers Bank and related marks, logos and brand names are trademarks of Rogers Communications Inc., or an affiliate, used under license. © 2024 Rogers Bank.</p>
+                 </div>
+                 <p></p>
+                 <p class="ds-body-r mb-16 ng-tns-c3846839460-1 ng-star-inserted"></p>
+                 <div class="rich-text-wrapper">
+                  <p>The Rogers Red Mastercard is a credit card issued by Rogers Bank.</p>
+                 </div>
+                 <p></p>
+                 <p class="ds-body-r mb-16 ng-tns-c3846839460-1 ng-star-inserted"></p>
+                 <div class="rich-text-wrapper">
+                  <p>The Rogers Red World Elite Mastercard is a credit card issued by Rogers Bank.</p>
+                 </div>
+                 <p></p><!----><!---->
+                </div>
+               </div>
+              </div>
+             </div>
+            </ds-expander>
+           </dsa-legal>
+          </div><!---->
+         </ui-block-inspector><!---->
+        </ui-block-legal><!---->
+       </div><!---->
+      </div><!----><!---->
+     </div><!---->
+     <p style="display: none;"> Build info: U2FsdGVkX18vBucUgl3wDlm8XSIwGkSfZd2mkbxEj4fl2Quv86AZa986jY9wAWAZ7jyClFIpMcvECtZP+RU9biS7vNLJml4I6gh+OD0U/AtiAK77Mt4m6Pdgdc78JYftWaj3U/ilC8gdCqqtxgag/BDdsNfZXhgSXZL4yw2Gd0N1pnb2R2VyYIW/OZ5a36aesrJ64ZHoA2hAMpMLF+XpndNTcBhS2OWw+3qX0I8QeAE= </p>
+    </ng-component><!----><app-cookie _ngcontent-ng-c2219046469 _nghost-ng-c30074797>
+     <!---->
+    </app-cookie>
+   </main>
+  </app-root><!----> <ge-footer config="{&quot;isFooterEnabled&quot;:true}"></ge-footer> 
+  <script src="polyfills-RT5I6R6G.js" type="module"></script>
+  <script src="main-QCSJQMYM.js" type="module"></script> 
+  <script id="ng-state" type="application/json">{"dynamicPage":{"pageMetadata":{"title":"Rogers Bank credit cards. Cash back rewards and more | Rogers Bank","description":"The Rogers Mastercard and Rogers Red World Elite Mastercard offer up to 3% cash back rewards with no annual fee.","searchEngineCrawlerOptions":"Allow all"},"templateType":"homePageTemplate","entryTitle":"Home Page - Welcome to Rogers Bank","title":"","date":"","alert":{"contentfulEntryId":"3BCCYoAMCMJkULyWQN2jqA","contentType":"alert","alert":{"copy":{"body":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>Due to the Canada Post labour disruption, there will be delays in mailing physical statements and cards. Electronic statements are available by signing in to online banking or the Rogers Bank app.\u003C/p>\u003C/div>","closeLabel":"Close"},"variant":"info"}},"introduction":"\u003Cdiv class=\"rich-text-wrapper\">\u003C/div>","hero":[{"contentfulEntryId":"4E7BN1RUkJaHD8pmxFYR4O","contentType":"mosaic","ads":[{"contentfulEntryId":"155utQT9g14BsfaJW2jlIK","contentType":"ad","heading":"Now get iPhone 16 Pro with 50% lower monthly payments*","copy":"No interest, no mobile term contract needed. \u003Cbr>Only with a Rogers credit card.","ctas":[{"contentfulEntryId":"7o6GWmDVOblWz1wzrZj78T","contentType":"cta","copy":"Learn More","variant":"primary","href":"https://www.rogers.com/mobility/device-financing?setLanguage=en","alt":"iPhone 16 Pro with Rogers credit card opens in a new window","ctaType":"External URL","isTracked":false,"isCustomerJourney":false,"type":"link","icon":"rds-icon-open-new","alignIcon":"right","target":"_blank"}],"picture":null,"headingType":"h1","background":{"image":"//images.ctfassets.net/q52gnekwj7nu/5U5DZHkrI3PZfyXp3JVtOD/acb335337fd4f887cd374fefe59e25fe/AdLarge_Desktop_Background_iPhone_16P_Mastercard_Dark_BG.png","imageMd":null,"positionX":"right","positionY":"bottom","size":"contain"},"mode":"dark","entryTitle":"EPP Banner"},{"contentfulEntryId":"2ul16CJuUo5VINxm0WeXuR","contentType":"ad","heading":"Get $100 in credits with Rogers credit card.","copy":"Purchase any Xfinity Internet & TV bundle and get $100 in credits on your Rogers credit card statements.**","ctas":[{"contentfulEntryId":"3fXMS63guiTq6Vn3S7FY7n","contentType":"cta","copy":"Get it Now","variant":"primary","href":"https://www.rogers.com/bundles/offers?icid=R_IGN_IM4_53Z7J1&setLanguage=en","alt":"Get it Now opens in a new window","ctaType":"External URL","isTracked":false,"isCustomerJourney":false,"type":"link","icon":"rds-icon-open-new","alignIcon":"right","target":"_blank"},{"contentfulEntryId":"5Rq6VSIToNHzGpO3rlEXuG","contentType":"cta","copy":"Compare cards","variant":"primary","href":"/en/compare_cards","alt":"Compare cards","ctaType":"URL","isTracked":false,"isCustomerJourney":false,"type":"link"}],"picture":{"src":"//images.ctfassets.net/q52gnekwj7nu/4lC0gYhuO8AvzWT4beOsfI/02759b31b09ce1e7462b177d3d6026b2/English_Desktop_Foreground_Resi_Rogers_bank.png","alt":"RESI Offer","variant":"lifestyle","preload":false,"fetchPriority":"auto","loading":"lazy"},"headingType":"h1","background":{"imageMd":null,"positionX":"right","positionY":"bottom","size":"contain","color":"container"},"mode":"default","entryTitle":"Get Rogers Ignite and get $100 in statement credits Homepage Ad"},{"contentfulEntryId":"5LmWORxmTXTAHvPyQTdeAZ","contentType":"ad","heading":"New card for new beginnings. ","copy":"With the Rogers Red Mastercard you get the maximum credit based on your home country credit history*. ","ctas":[{"contentfulEntryId":"1NfMgpsqDjr5fy2nNIY4UN","contentType":"cta","copy":"Learn More","variant":"primary","href":"/en/credit-card-for-newcomers","ctaType":"URL","isTracked":false,"isCustomerJourney":false,"type":"link"}],"picture":{"src":"//images.ctfassets.net/q52gnekwj7nu/7uvcmYn5jvJbS8LDV0jXcm/481edd0ab034fd03c67fe821871b33ff/AWS-1_846x825__Carousel_Banner_.jpg","alt":"Newcomers","variant":"lifestyle","preload":false,"fetchPriority":"auto","loading":"lazy"},"headingType":"h1","background":{"imageMd":null,"positionX":"right","positionY":"bottom","size":"contain"},"mode":"default","entryTitle":"Newcomers Banner"},{"contentfulEntryId":"320gdiCzb2Bl9CzIHYe5Vj","contentType":"ad","heading":"Get 0% interest for up to 48 months","copy":"With an Equal Payment Plan on eligible Rogers in-store purchases.* \u003Cbr>Visit a Rogers store for details","ctas":[{"contentfulEntryId":"5y85Fg7mkfNQFkyAQ6NaUz","contentType":"cta","copy":"Find a Store","variant":"primary","href":"https://www.rogers.com/stores/?icid=R_COR_JOR_9BHJDB","alt":"Find a Store opens in a new window","ctaType":"External URL","isTracked":false,"isCustomerJourney":false,"type":"link","icon":"rds-icon-open-new","alignIcon":"right","target":"_blank"}],"picture":null,"headingType":"h1","background":{"image":"//images.ctfassets.net/q52gnekwj7nu/RXqMaEBOWh84DqyV8ByXk/8443cb1338ea89368c6f4345497f19b9/EN_AdLarge_Desktop_Background_iPhone_16P_Mastercard_Dark_BG.png","imageMd":null,"positionX":"right","positionY":"bottom","size":"contain"},"mode":"dark","entryTitle":"Get 0% interest for up to 48 months QC"},{"contentfulEntryId":"4dmimOEdZ7xDhBTR34o7Ch","contentType":"ad","heading":"Earn, Save and Get Rewarded","copy":"3% cash back value when you redeem with Rogers & 5 Roam Like Home Days at no cost every year with an eligible Rogers mobile plan. ","ctas":[{"contentfulEntryId":"6rPjoslrvOn0EkjVeMQmqU","contentType":"cta","copy":"Learn more","variant":"primary","href":"/rogers_benefits#osoxoaaix1vQGjNzwVLIr","ctaType":"URL","type":"link"}],"picture":null,"headingType":"h1","background":{"image":"//images.ctfassets.net/q52gnekwj7nu/6EqMKjAa0XQ4Xp4NGT6sW2/926b820c936bd1285d4c6af7f971ff85/EN.png","imageMd":null,"positionX":"right","positionY":"bottom","size":"contain"},"mode":"dark","entryTitle":"Earn, Save and Get Rewarded Homepage Ad QC"},{"contentfulEntryId":"6oFXPMULyT0QKvHlgEY8Au","contentType":"ad","heading":"New card for new beginnings. ","copy":"With the Rogers Red Mastercard you get the maximum credit based on your home country credit history*. ","ctas":[{"contentfulEntryId":"1NfMgpsqDjr5fy2nNIY4UN","contentType":"cta","copy":"Learn More","variant":"primary","href":"/en/credit-card-for-newcomers","ctaType":"URL","isTracked":false,"isCustomerJourney":false,"type":"link"}],"picture":{"src":"//images.ctfassets.net/q52gnekwj7nu/7uvcmYn5jvJbS8LDV0jXcm/481edd0ab034fd03c67fe821871b33ff/AWS-1_846x825__Carousel_Banner_.jpg","alt":"Newcomers","variant":"lifestyle","preload":false,"fetchPriority":"auto","loading":"lazy"},"headingType":"h1","background":{"imageMd":null,"positionX":"right","positionY":"bottom","size":"contain"},"mode":"default","entryTitle":"New card for new beginnings QC"}],"mode":"dark"}],"body":[{"contentfulEntryId":"3kQLNSeAqN5w7hsIWDTVLD","contentType":"layoutContainer","entryTitle":"Offer Tiles - There’s a Rogers Bank credit card that’s right for you","layoutMode":"light","uiBlocks":[{"contentfulEntryId":"1ftMG1WEUVDy8eyHL9eKHC","contentType":"contentBlock","sectionTitle":"There’s a Rogers Bank credit card that’s right for you","sectionBody":"\u003Cdiv class=\"rich-text-wrapper\">\u003C/div>","sectionBodyAlignment":"center","components":[{"contentfulEntryId":"5q3jkgWvGY1VfWndYs6gw9","contentType":"layoutContainerElement","uiBlocks":[{"contentfulEntryId":"7gGHAx7o9JqpDQR6nWys7C","contentType":"featuredElement","title":"Rogers Red Mastercard®","body":"\u003Cdiv class=\"rich-text-wrapper\">\u003C/div>","cta":{"contentfulEntryId":"5ruPh6RVgpOznJw7NUbFYJ","contentType":"cta","copy":"Learn More","variant":"secondary","href":"/rogers_red_mastercard_details","ctaType":"URL","type":"link"},"image":{"picture":{"src":"//images.ctfassets.net/q52gnekwj7nu/6MSgBUdsGOfzmzHKkr3yFT/d49a8a5b26a54ddb10033385d6ef272e/Rogers_Mastercard_image.png","alt":"Rogers Mastercard image","variant":"product","preload":true,"fetchPriority":"high","loading":"eager"}},"style":"OfferTile"},{"contentfulEntryId":"7xCP5nz07GM6cSZpa8S6kA","contentType":"featuredElement","title":"Rogers Red World Elite® Mastercard®","body":"\u003Cdiv class=\"rich-text-wrapper\">\u003C/div>","cta":{"contentfulEntryId":"7pvGxvRfos2Vcj5hoV3mVN","contentType":"cta","copy":"Learn more","variant":"secondary","href":"/rogers_red_worldelite_mastercard_details","ctaType":"URL","type":"link"},"image":{"picture":{"src":"//images.ctfassets.net/q52gnekwj7nu/8ggBgGbOkqPioA5DIMVhe/72547f061a73181780799b421755c7f0/Rogers_Bank_Red_World_Elite_Mastercard.png","alt":"Rogers Bank Red World Elite Mastercard","variant":"product","preload":true,"fetchPriority":"high","loading":"eager"}},"style":"OfferTile"}],"alignment":"center","col":12,"colSm":6,"colMd":4},{"contentfulEntryId":"3lUQI7vYmpkvyTfsvHF9a0","contentType":"richText","entryTitle":"Exclusive Rogers benefits","alignment":"center","content":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>Rogers Bank credit cards reward the ways you already spend.\u003C/p>\u003C/div>"}],"cta":[{"contentfulEntryId":"2yJ98BSKlSJUZZAdcKQRBc","contentType":"cta","copy":"Compare Credit Cards","variant":"primary","href":"/compare_cards","ctaType":"URL","type":"link"}]}],"cssClasses":["ds-bg-body-container","pt-md-56","pb-md-56","pt-40","pb-40"],"enableFullWidth":false},{"contentfulEntryId":"72yxHzhA7129V3OTDBTahJ","contentType":"layoutContainer","entryTitle":"Logo List - Your award-winning card for cash back","layoutMode":"light","uiBlocks":[{"contentfulEntryId":"7LzITiKsORKhaJT0AaNbXf","contentType":"contentBlock","sectionTitle":"Your award-winning card for cash back","sectionBody":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>For the Rogers Red World Elite\u003Csup>®\u003C/sup> Mastercard\u003Csup>®\u003C/sup>\u003C/p>\u003C/div>","sectionBodyAlignment":"center","components":[{"contentfulEntryId":"1TVQNtoPZOwN26PNL1BNcy","contentType":"layoutContainerElement","uiBlocks":[{"contentfulEntryId":"5jnyXClJMGSDwl8LOd1u8i","contentType":"featuredElement","body":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>\u003Cb class=\"text-bold\">Top No Fee Cash Back Credit Card 2024\u003C/b>\u003Csup>\u003Cb class=\"text-bold\">1\u003C/b>\u003C/sup>\u003C/p>\u003Cp>Rewards Canada\u003C/p>\u003C/div>","image":{"picture":{"src":"//images.ctfassets.net/q52gnekwj7nu/4TB1e15FvtwQtTGDiTnKo1/59680ba93651ec7e70d572b533e32c3a/award_rewardscanada.en-4dba49d39b0adda584a1baf7c3d01caeb728ab56013a0f4a58ee166fc802fde0.png","alt":"Rewards Canada Badge","variant":"product","fetchPriority":"auto","loading":"lazy"}},"style":"Logo"},{"contentfulEntryId":"30UppL9MPiORUq2qk9KCbG","contentType":"featuredElement","body":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>\u003Cb class=\"text-bold\">Best Challenger Credit Card 2024\u003C/b>\u003Csup>\u003Cb class=\"text-bold\">2\u003C/b>\u003C/sup>\u003C/p>\u003Cp>creditcardGenius\u003C/p>\u003C/div>","image":{"picture":{"src":"//images.ctfassets.net/q52gnekwj7nu/6U7Ga2Ei4KSA8ltITmjXXS/dfba3ef421813bd8d98d2650fec74614/award_creditcardgenius.en-51eba4796658a560de877d0c25d8e18a3bd3da2549361acdb8b5c7ad972d325a.png","alt":"CreditcardGenius badge","variant":"product","fetchPriority":"auto","loading":"lazy"}},"style":"Logo"},{"contentfulEntryId":"4EHf8MGMCkNJWrXa5RvqDC","contentType":"featuredElement","body":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>\u003Cb class=\"text-bold\">Best Free Travel Credit Card 2024\u003C/b>\u003Cb class=\"text-bold\">\u003Csup>3\u003C/sup>\u003C/b>\u003C/p>\u003Cp>Hardbacon\u003C/p>\u003C/div>","image":{"picture":{"src":"//images.ctfassets.net/q52gnekwj7nu/1oUCinTEkmnBvrKYd2ZERd/4273bc9e6dc17eae30d41ba819300ef7/award_hardbacon.en-0f169002a6c28ddfd2e26bb2bcba56d953297d40b3a32f6a912ebdcac26214cd.png","alt":"Hardbacon badge","variant":"product","fetchPriority":"auto","loading":"lazy"}},"style":"Logo"}],"alignment":"center","col":12,"colSm":6,"colMd":4}]}],"cssClasses":["ds-bg-body-container","pt-md-56","pb-md-56","pt-40","pb-40"],"enableFullWidth":false},{"contentfulEntryId":"5Z8JowyucYI5KvyNpOiWUx","contentType":"layoutContainer","entryTitle":"Section Block - Simplified banking, now available anywhere.","layoutMode":"light","uiBlocks":[{"contentfulEntryId":"7jZM3lyBHDPZ9jWa8X6FzS","contentType":"richText","entryTitle":"Manage your Rogers Bank credit card anywhere","alignment":"center","content":"\u003Cdiv class=\"rich-text-wrapper\">\u003Ch2 class=\"ds-title-2\">Manage your Rogers Bank credit card anywhere \u003C/h2>\u003Cp>\u003Cbr/>\u003C/p>\u003C/div>"},{"contentfulEntryId":"60XXljMvK5InNJ0Gd33Rss","contentType":"sectionBlock","title":"Simplified banking,\u003Cbr> now available anywhere.","content":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>The Rogers Bank app is the easiest way to manage your account.\u003C/p>\u003C/div>","variant":"5050","alignMedia":"left","ctas":[{"contentfulEntryId":"476P0UgXREu4GxZIEy7nCW","contentType":"cta","copy":"Rogers Bank App","variant":"primary","href":"/mobile_app","ctaType":"URL","isTracked":false,"isCustomerJourney":false,"type":"link"}],"picture":{"src":"//images.ctfassets.net/q52gnekwj7nu/6mXFmh3KDU5pJlyacvbAZL/a0cf3f24a6ae70709f87a70f10a0a982/mobile_app_con.en.png","alt":"Rogers Bank Mobile App","variant":"product","preload":true,"fetchPriority":"high","loading":"eager"},"headingType":"h2"}],"cssClasses":["ds-bg-body-container","pt-md-56","pb-md-56","pt-40","pb-40"],"enableFullWidth":false},{"contentfulEntryId":"4xYlhs6OtGYwBWzGWmmSwl","contentType":"layoutContainer","entryTitle":"Section Block - Mobile Wallet for Rogers Bank credit cards is here!","layoutMode":"light","uiBlocks":[{"contentfulEntryId":"6OXFolCds2FSnnIagdthbX","contentType":"sectionBlock","title":"Mobile Wallet for Rogers Bank credit cards is here!","content":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>Everything you love about your Rogers Bank credit card, now on your mobile device.\u003C/p>\u003C/div>","variant":"5050","alignMedia":"right","ctas":[{"contentfulEntryId":"7zDxnjcenKp7EAmnCRpQIi","contentType":"cta","copy":"Mobile Wallet","variant":"primary","href":"/mobile_wallet","ctaType":"URL","type":"link"}],"picture":{"src":"//images.ctfassets.net/q52gnekwj7nu/7DdaAuJy3eoLxCJLnUDCGQ/295c5c39402132bec0e7e3986bced9b4/mobile_wallet_apple_3_con.en.png","alt":"Successful Mobile Wallet Transaction","variant":"product","fetchPriority":"auto","loading":"lazy"},"headingType":"h2"}],"cssClasses":["ds-bg-body-default","pt-md-56","pb-md-56","pt-40","pb-40"],"enableFullWidth":false},{"contentfulEntryId":"2OD7tX9syLjY9KFp9JQqZa","contentType":"layoutContainer","entryTitle":"Value props - With a Rogers Bank Mastercard, you get...","layoutMode":"light","uiBlocks":[{"contentfulEntryId":"eGZSGhKuBCD2JWR0cJwJz","contentType":"contentBlock","sectionTitle":"With a Rogers Bank credit card, you get…","sectionBody":"\u003Cdiv class=\"rich-text-wrapper\">\u003C/div>","sectionBodyAlignment":"center","components":[{"contentfulEntryId":"46R2RqvH7rZyJfIahXZX8s","contentType":"layoutContainerElement","uiBlocks":[{"contentfulEntryId":"6ApCxkMjFQQAFRrll0Cr1d","contentType":"featuredElement","title":"Rewards without Limits","body":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>Get unlimited cash back rewards for all eligible purchases you make every day, and redeem them anywhere Mastercard is accepted.\u003Csup>5\u003C/sup>\u003C/p>\u003C/div>","cta":{"contentfulEntryId":"5gqicBl9n8PVipGfuKpqsk","contentType":"cta","copy":"Learn More","variant":"secondary","href":"/rewards","ctaType":"URL","type":"link"},"style":"ValueProp","icon":"money-back"},{"contentfulEntryId":"2weRXBqQvJnlAVV1JzmKZ3","contentType":"featuredElement","title":"24/7 Security","body":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>Everything about your card is designed for maximum security, from automatic fraud prevention and personalized alerts to chip and PIN technology.\u003C/p>\u003C/div>","cta":{"contentfulEntryId":"76riTh7l8qMRqov9XcMcmn","contentType":"cta","copy":"Learn More","variant":"tertiary","href":"/security","ctaType":"URL","type":"link"},"style":"ValueProp","icon":"security"},{"contentfulEntryId":"4TO1M3SDLT2DgHWpGFdABP","contentType":"featuredElement","title":"Balance Protection","body":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>Group Balance Protection Insurance\u003Csup>6\u003C/sup> protects you and your loved ones from the financial impact of unforeseen events.\u003C/p>\u003C/div>","cta":{"contentfulEntryId":"5imcAX0pVsNhmRQvTlulXn","contentType":"cta","copy":"Protection Services","variant":"primary","href":"/help_centre_answers/protection_services","ctaType":"URL","type":"link"},"style":"ValueProp","icon":"family"}],"alignment":"center","col":12,"colSm":6,"colMd":4}]}],"cssClasses":["ds-bg-body-container","pt-md-56","pb-md-56","pt-40","pb-40"],"enableFullWidth":false},{"contentfulEntryId":"1beDQDXKfRNscVNCIWbE7B","contentType":"layoutContainer","entryTitle":"Section Block -  Easy to earn, easy to redeem","layoutMode":"light","uiBlocks":[{"contentfulEntryId":"7jZM3lyBHDPZ9jWa8X6FzS","contentType":"richText","entryTitle":"Manage your Rogers Bank credit card anywhere","alignment":"center","content":"\u003Cdiv class=\"rich-text-wrapper\">\u003Ch2 class=\"ds-title-2\">Manage your Rogers Bank credit card anywhere \u003C/h2>\u003Cp>\u003Cbr/>\u003C/p>\u003C/div>"},{"contentfulEntryId":"5j9OJ0kMkLGddNDXGsg49I","contentType":"sectionBlock","title":" Easy to earn, easy to redeem","content":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>Earn unlimited cash back rewards anywhere Mastercard is accepted, and redeem them for everyday purchases like gas and groceries, big ticket items, or apply them directly to your Rogers, Fido, or chatr bill.\u003C/p>\u003Cp>Redeem your rewards instantly with the Rogers Bank app.\u003C/p>\u003Cdiv class=\"d-block\">\u003Cui-block-cta [uiBlock]='{\"contentfulEntryId\":\"5rmgRrgLMM1pMJntWZCNep\",\"contentType\":\"cta\",\"copy\":\"Learn More\",\"variant\":\"primary\",\"href\":\"/rewards\",\"ctaType\":\"URL\",\"type\":\"link\"}'>\u003C/ui-block-cta>\u003C/div>\u003Cp>\u003Cbr/>\u003C/p>\u003C/div>","variant":"5050","alignMedia":"left","ctas":[{"contentfulEntryId":"1RwSXwessaXeAW6nUNxUua","contentType":"cta","copy":"Download on the App Store","variant":"primary","href":"https://apps.apple.com/us/app/rogers-bank/id1527119582","alt":"Download on the App Store opens in a new window","ctaType":"ThirdParty","thirdPartyType":"AppStore","type":"link","img":"https://images.ctfassets.net/q52gnekwj7nu/1H8FGXjC7ZfJhaq6NV1YmP/1ff75a0f06d4b7f76101c9debceee65f/app-store-en.svg","target":"_blank","icon":"rds-icon-open-new"},{"contentfulEntryId":"2AUCUi2HL6oogqOAY5Pvjd","contentType":"cta","copy":"Get it on Google Play","variant":"primary","href":"https://play.google.com/store/apps/details?id=com.rogers.banking","alt":"Get it on Google Play opens in a new window","ctaType":"ThirdParty","thirdPartyType":"GooglePlay","type":"link","img":"https://images.ctfassets.net/q52gnekwj7nu/5Xa6iYxzipGK5lfMldOsTR/81e1f8856b9cb84e965d80549a42b29b/google-play-en.svg","target":"_blank","icon":"rds-icon-open-new"}],"picture":{"src":"//images.ctfassets.net/q52gnekwj7nu/4CSGmKtXjLGjfmQeiLol2i/35fe46be13b99d07f3a881d25a22730a/mobile_app_hero.en.png","alt":"Rogers Bank App","variant":"product","preload":true,"fetchPriority":"high","loading":"eager"},"headingType":"h2"}],"cssClasses":["ds-bg-body-default","pt-md-56","pb-md-56","pt-40","pb-40"],"enableFullWidth":false},{"contentfulEntryId":"RF8yzMbULCxnGsEmQsrqQ","contentType":"layoutContainer","entryTitle":"Section Block - Get ready to make more possible.","layoutMode":"dark","uiBlocks":[{"contentfulEntryId":"22WXVbYMEYduULrdDwuhtL","contentType":"sectionBlock","title":"Card options for every customer","content":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>Learn more about Rogers Bank credit cards to find a card that’s right for you.\r\u003C/p>\u003C/div>","variant":"5050","alignMedia":"left","ctas":[{"contentfulEntryId":"4nKWcTi2VmBoLP5KJHJgCT","contentType":"cta","copy":"Get Started","variant":"primary","href":"/compare_cards","ctaType":"URL","type":"link"}],"picture":{"src":"//images.ctfassets.net/q52gnekwj7nu/7vYhsVn9nFo6t2TEgYSmAC/298e948717b9799a984fb680d3777f1f/card_stack_square-a168490a3eb1592ff8dfd09d62566dde40cbf348bc2194e43dcd79ae8ec5b986.png","alt":"Rogers Bank","variant":"product","fetchPriority":"auto","loading":"lazy"},"headingType":"h2"}],"cssClasses":["ds-bg-body-default","pt-md-56","pb-md-56","pt-40","pb-40"],"enableFullWidth":false}],"legal":{"contentfulEntryId":"IgOLxe3oNqcMKx08BOPAa","contentType":"legalDisclaimer","collapsedCta":{"copy":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cspan class=\"d-block\">See Full Details\u003C/span>\u003C/div>","alt":""},"expandedCta":{"copy":"\u003Cdiv class=\"rich-text-wrapper\">\u003Cspan class=\"d-block\">Hide Full Details\u003C/span>\u003C/div>","alt":""},"details":["\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>Offers subject to change without notice. Application approval subject to credit assessment and income verification.\u003C/p>\u003Cp>*As compared to financing a phone at full price with $0 down through a Financing Agreement with Rogers Communications Canada Inc. over 24 months without Save &amp; Return and/or promo credits. Offer available to primary cardholders only on purchases of $250 or more on your Rogers Bank credit card made in participating Rogers, Fido or Shaw-branded stores or third-party retail locations offering Rogers products. Terms of 36 or 48 months available. Offer must be accepted by the primary cardholder by submitting the request with a Rogers representative at the time of purchase. Request cannot be made through your online Rogers Bank account or in any other manner. In order to qualify, at the time you submit your request: your account must be in good standing, you must have less than 6 Equal Payment Plans on your account and the outstanding balance on your account must be equal to or greater than the amount of the purchase. It may take up to 10 calendar days after submitting the request form for your purchase to be converted to an Equal Payment Plan. During the term of the Equal Payment Plan, interest will be calculated on the outstanding Equal Payment Plan balance at an annual interest rate of 0%. There is no interest payable from the date of the purchase up to the date the eligible purchase is converted to an Equal Payment Plan. Offer availability for mobile wallet purchases subject to tap limit restrictions at participating retailers. Subject to credit assessment and/or income verification, as applicable. \u003C/p>\u003Cp>** \u003Cb class=\"text-bold\">Offer Terms and Conditions: \u003C/b>Offer available to Rogers Bank credit card primary cardholders who are not already Rogers Internet or Comwave customers. Offer begins on \u003Cb class=\"text-bold\">November 7, 2024 and ends on December 31, 2024 at 11:59 pm EST\u003C/b> (the “Offer Period”). Get $100 in credits on applicable Rogers Bank credit card statements when you, during the Offer Period: (a) subscribe to an eligible Rogers Xfinity or Comwave Internet package plus an eligible Rogers Xfinity TV/Streaming plan or Comwave TV package, online or in participating Rogers branded stores or third-party retail locations offering Rogers products, and (b) pay your Rogers Xfinity or Comwave bill with your Rogers Bank credit card (Rogers/Comwave account holder and Rogers Bank primary cardholder must be the same). If you are not a cardholder, you must apply for a Rogers Bank credit card during the Offer Period and within 15 days of your Rogers Xfinity or Comwave service subscription. Application must be approved to qualify for the offer. Application approval subject to credit assessment and, if applicable, income verification. After qualifying for the offer, your $100 savings will be applied as two $50 credits on your Rogers Bank statements as follows: (a) the first $50 credit within approximately 3 months, and (b) the second $50 credit within approximately 6 months. Your Rogers Bank and Rogers or Comwave residential services accounts must be open, active and in good standing at the time of the statement credit or it will not be applied. Offer may be changed, cancelled or extended at any time without notice. We may revoke this offer if you appear to be manipulating or abusing it, or are engaged in any suspicious or fraudulent activity, as we may determine in our sole discretion. Rogers and Comwave employees are not eligible for this offer.\u003C/p>\u003C/div>"],"list":["\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>As awarded by \u003Ca href='https://www.rewardscanada.ca/' target=\"_blank\" aria-label=\"Rewards Canada opens in a new window\">Rewards Canada\u003C/a> in January 2024\u003C/p>\u003C/div>","\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>As awarded by \u003Ca href='https://creditcardgenius.ca/blog/best-credit-cards#best-challenger' target=\"_blank\" aria-label=\"creditcardGenius opens in a new window\">creditcardGenius\u003C/a> in January 2024.\u003C/p>\u003C/div>","\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>As awarded by \u003Ca href='https://www.hardbacon.ca/' target=\"_blank\" aria-label=\"Hardbacon opens in a new window\">Hardbacon\u003C/a> in January 2024.\u003C/p>\u003C/div>","\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>As awarded by \u003Ca href='https://moneygenius.ca/blog/best-credit-cards#best-costco-credit-card' target=\"_blank\" aria-label=\"moneyGenius opens in a new window\">moneyGenius\u003C/a> in January 2024.\u003C/p>\u003C/div>","\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>Minimum purchase and redemption amount of $10. Cash back rewards apply up to lesser of purchase amount or rewards balance. Some exceptions apply, including cash advances and cash equivalents. Rewards are not refundable. Account must be in good standing. See Reward Program Terms and Conditions, \u003Ca href='/legal' target=\"_self\" aria-label=\"rogersbank.com/legal\">rogersbank.com/legal\u003C/a>\u003C/p>\u003C/div>","\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>Rogers Bank optional Group Balance Protection group insurance is underwritten by Canadian Premier Life Insurance Company.\u003C/p>\u003C/div>"],"notes":["\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>\u003Csup>®/TM\u003C/sup> Mastercard and World Elite are registered trademarks and the circles design is a trademark of Mastercard International Incorporated. Used under license.\u003C/p>\u003C/div>","\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>\u003Csup>TM\u003C/sup> Rogers and Mobius Design, Rogers Bank and related marks, logos and brand names are trademarks of Rogers Communications Inc., or an affiliate, used under license. © 2024 Rogers Bank.\u003C/p>\u003C/div>","\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>The Rogers Red Mastercard is a credit card issued by Rogers Bank.\u003C/p>\u003C/div>","\u003Cdiv class=\"rich-text-wrapper\">\u003Cp>The Rogers Red World Elite Mastercard is a credit card issued by Rogers Bank.\u003C/p>\u003C/div>"]},"enableSearch":false,"searchCategories":[],"isVirtualAssistantEnabled":true}}</script>
+ </body>
+</html>

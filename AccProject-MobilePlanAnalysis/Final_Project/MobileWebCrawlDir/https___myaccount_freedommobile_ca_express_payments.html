@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="facebook-domain-verification" content="sb17gdjce5rufhwja1zumgyxe3i01r">
+  <link rel="icon" href="/favicon.png">
+  <title>Freedom Mobile</title>
+  <script>const date = new Date();
+
+      const currentDay = String(date.getDate()).padStart(2, '0');
+
+      const currentMonth = String(date.getMonth() + 1).padStart(2, '0');
+
+      const currentYear = date.getFullYear();
+
+      var currentDate = `${currentDay}-${currentMonth}-${currentYear}`;
+
+      var url = `/config.js?${currentDate}`;
+      // We append the date to the config script to avoid caching of old version
+      var script = `<script type="text/javascript" src="${url}"><\/script>`;
+      document.write(script);
+
+      const checkVersion = () => {
+        try {
+          let needsToClearCache;
+          const isMyAccount = window.location.origin.includes('myaccount');
+          const isShopOrLogin =
+            window.location.origin.includes('shop') ||
+            window.location.origin.includes('login');
+          if (isMyAccount || isShopOrLogin) {
+            needsToClearCache = !window.config || !window.build_tag;
+
+            if (needsToClearCache) {
+              console.log('needs to update');
+              var cacheRefreshDone = localStorage.getItem(
+                'refreshCacheHasBeenDone',
+              );
+              if (caches && !cacheRefreshDone) {
+                console.log('cache found');
+                // Service worker cache should be cleared with caches.delete()
+                caches.keys().then(names =>
+                  Promise.all(names.map(name => caches.delete(name))).then(
+                    () => {
+                      localStorage.setItem('refreshCacheHasBeenDone', 'True');
+                      window.location.reload(true);
+                    },
+                  ),
+                );
+              } else {
+                localStorage.removeItem('refreshCacheHasBeenDone');
+              }
+            }
+          }
+        } catch (e) {
+          console.log({ e });
+        }
+      };
+
+      window.onload = function() {
+        setTimeout(() => {
+          console.log('running');
+          checkVersion();
+        }, 2000);
+      };</script>
+  <script>var utag_data={}</script>
+  <script>(() => {
+        const tealiumScript = document.createElement('script');
+        tealiumScript.src = `//tags.tiqcdn.com/utag/freedom/freedom-web/${window.config.tealium.environment}/utag.sync.js`;
+        tealiumScript.async = true;
+        document.getElementsByTagName('head')[0].appendChild(tealiumScript);
+      })();</script>
+  <script>window["adrum-start-time"]=(new Date).getTime(),function(t){t.appKey=window.config.APPDYNAMICS.key,t.adrumExtUrlHttp="http://cdn.appdynamics.com",t.adrumExtUrlHttps="https://cdn.appdynamics.com",t.beaconUrlHttp="http://pdx-col.eum-appdynamics.com",t.beaconUrlHttps="https://pdx-col.eum-appdynamics.com",t.xd={enable:!1},t.spa={spa2:!0}}(window["adrum-config"]||(window["adrum-config"]={}))</script>
+  <script src="//cdn.appdynamics.com/adrum/adrum-latest.js" charset="UTF-8"></script>
+  <script>const cardinalScript = document.createElement('script');
+      cardinalScript.type = 'text/javascript';
+      cardinalScript.async = true;
+      cardinalScript.src = window.config.cardinal.script;
+      cardinalScript.onload = function configureCardinal() {
+        window.Cardinal.configure({
+          logging: {
+            level: window.config.environment === 'production' ? 'off' : 'on',
+          },
+        });
+      };
+      document.getElementsByTagName('head')[0].appendChild(cardinalScript);</script>
+  <script>(function(n, u) {
+        (window.CXoneDfo = n),
+          (window[n] =
+            window[n] ||
+            function() {
+              (window[n].q = window[n].q || []).push(arguments);
+            }),
+          (window[n].u = u),
+          (e = document.createElement('script')),
+          (e.type = 'module'),
+          (e.src = u + '?' + Math.round(Date.now() / 1e3 / 3600)),
+          document.head.appendChild(e);
+      })(
+        'cxone',
+        'https://web-modules-de-ca1.niceincontact.com/loader/1/loader.js',
+      );
+
+      cxone('init', '1180');
+      cxone('guide', 'init', { locale: 'en-US' });</script>
+  <meta name="apple-mobile-web-app-title" content="Freedom Mobile">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#007CBA">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon_180x180.d5994dbef4d4a48f853477be067aea3f.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="/icon_167x167.4d1647616a842ee22decd2bc941f9e69.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon_152x152.fe86b369d815a87a2cf24046a8943029.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon_120x120.4ba88fd36df9c982e0455b2bea4650cd.png">
+  <link rel="manifest" href="/manifest.190a1730942806509001e2c3a99ecebd.json">
+ </head>
+ <body>
+  <noscript>
+   If you're seeing this message, that means <strong>JavaScript has been disabled on your browser</strong>, please <strong>enable JS</strong> to make this app work.
+  </noscript>
+  <script>(function (a, b, c, d) {
+        a = `//tags.tiqcdn.com/utag/freedom/freedom-web/${window.config.tealium.environment}/utag.js`;
+        b = document;
+        c = 'script';
+        d = b.createElement(c);
+        d.src = a;
+        d.type = 'text/java' + c;
+        d.async = true;
+        a = b.getElementsByTagName(c)[0];
+        a.parentNode.insertBefore(d, a);
+      })();</script>
+  <script src="https://libs.na.bambora.com/customcheckout/1/customcheckout.js"></script>
+  <div id="app"></div>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+  <script type="text/javascript" src="/runtime.c89f361cafc5ed9e46a6.js"></script>
+  <script type="text/javascript" src="/npm.babel.554c1a87e8b6883f3aa6.chunk.js"></script>
+  <script type="text/javascript" src="/npm.web_component_library.41be899d421394df9b6a.chunk.js"></script>
+  <script type="text/javascript" src="/npm.moment.386cad8ce88574def4b5.chunk.js"></script>
+  <script type="text/javascript" src="/npm.lodash.34645176b5f30f970074.chunk.js"></script>
+  <script type="text/javascript" src="/npm.react-app-polyfill.5dec26adb12cba1c283e.chunk.js"></script>
+  <script type="text/javascript" src="/npm.contentful.6e8916dc2119545a6537.chunk.js"></script>
+  <script type="text/javascript" src="/npm.react-redux.9103682712cbb43e690d.chunk.js"></script>
+  <script type="text/javascript" src="/npm.redux-actions.86f8966e44fb11c197a8.chunk.js"></script>
+  <script type="text/javascript" src="/npm.axios.0f1355daa0f8743c980c.chunk.js"></script>
+  <script type="text/javascript" src="/main.d203a220244fb6124138.chunk.js"></script>
+ </body>
+</html>
